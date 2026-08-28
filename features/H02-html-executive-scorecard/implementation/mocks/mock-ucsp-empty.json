@@ -1,0 +1,51 @@
+{
+  "contexto": {
+    "anio": 2025,
+    "semestre": null,
+    "escala": "ANUAL",
+    "programa": null,
+    "nivel_academico": null,
+    "gestion": null,
+    "departamento": null,
+    "provincia": null,
+    "region_sur": null,
+    "universidad_seleccionada": null
+  },
+  "UCSP": {
+    "matriculas": null,
+    "matriculas_yoy": null,
+    "matriculas_yoy_valor": null,
+    "ingresantes": null,
+    "ingresantes_yoy": null,
+    "ingresantes_yoy_valor": null,
+    "market_share_matriculas": null,
+    "market_share_ingresantes": null
+  },
+  "MERCADO": {
+    "matriculas": 100450,
+    "ingresantes": 18250,
+    "cantidad_universidades": 42,
+    "cantidad_programas": 185
+  },
+  "RANKING": {
+    "posicion_ucsp": null,
+    "total_universidades": 42,
+    "lider": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS",
+    "matriculas_lider": 28900,
+    "brecha_vs_lider": null,
+    "universidad_lider_es_ucsp": false
+  },
+  "TOP3_PLUS_UCSP": [
+    { "universidad": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS", "posicion": 1, "matriculas": 28900, "es_ucsp": false },
+    { "universidad": "UNIVERSIDAD NACIONAL DE INGENIERÍA", "posicion": 2, "matriculas": 19800, "es_ucsp": false },
+    { "universidad": "UNIVERSIDAD CATÓLICA DEL PERÚ", "posicion": 3, "matriculas": 15600, "es_ucsp": false }
+  ],
+  "TENDENCIA_MATRICULAS": [],
+  "TENDENCIA_INGRESANTES": [],
+  "meta": {
+    "contract_version": "1.0",
+    "generated_at": "2026-08-28T10:00:00Z",
+    "source_measures_count": 31,
+    "warnings": ["UCSP sin datos en el contexto actual"]
+  }
+}

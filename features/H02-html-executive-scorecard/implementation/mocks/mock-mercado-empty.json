@@ -1,0 +1,59 @@
+{
+  "contexto": {
+    "anio": 2025,
+    "semestre": null,
+    "escala": "ANUAL",
+    "programa": null,
+    "nivel_academico": null,
+    "gestion": null,
+    "departamento": null,
+    "provincia": null,
+    "region_sur": null,
+    "universidad_seleccionada": null
+  },
+  "UCSP": {
+    "matriculas": 12450,
+    "matriculas_yoy": null,
+    "matriculas_yoy_valor": null,
+    "ingresantes": 2850,
+    "ingresantes_yoy": 0.12,
+    "ingresantes_yoy_valor": 305,
+    "market_share_matriculas": null,
+    "market_share_ingresantes": null
+  },
+  "MERCADO": {
+    "matriculas": 0,
+    "ingresantes": 0,
+    "cantidad_universidades": 0,
+    "cantidad_programas": 0
+  },
+  "RANKING": {
+    "posicion_ucsp": null,
+    "total_universidades": 0,
+    "lider": null,
+    "matriculas_lider": null,
+    "brecha_vs_lider": null,
+    "universidad_lider_es_ucsp": false
+  },
+  "TOP3_PLUS_UCSP": [],
+  "TENDENCIA_MATRICULAS": [
+    { "anio": 2021, "semestre": 1, "matriculas": 8200 },
+    { "anio": 2022, "semestre": 1, "matriculas": 9100 },
+    { "anio": 2023, "semestre": 1, "matriculas": 10200 },
+    { "anio": 2024, "semestre": 1, "matriculas": 11400 },
+    { "anio": 2025, "semestre": 1, "matriculas": 12450 }
+  ],
+  "TENDENCIA_INGRESANTES": [
+    { "anio": 2021, "ingresantes": 2100 },
+    { "anio": 2022, "ingresantes": 2350 },
+    { "anio": 2023, "ingresantes": 2600 },
+    { "anio": 2024, "ingresantes": 2750 },
+    { "anio": 2025, "ingresantes": 2850 }
+  ],
+  "meta": {
+    "contract_version": "1.0",
+    "generated_at": "2026-08-28T10:00:00Z",
+    "source_measures_count": 31,
+    "warnings": ["Mercado sin datos en el contexto actual"]
+  }
+}

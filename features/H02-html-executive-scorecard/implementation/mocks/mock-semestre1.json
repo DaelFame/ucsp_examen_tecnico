@@ -1,0 +1,64 @@
+{
+  "contexto": {
+    "anio": 2025,
+    "semestre": 1,
+    "escala": "SEMESTRAL",
+    "programa": null,
+    "nivel_academico": null,
+    "gestion": null,
+    "departamento": null,
+    "provincia": null,
+    "region_sur": null,
+    "universidad_seleccionada": null
+  },
+  "UCSP": {
+    "matriculas": 6200,
+    "matriculas_yoy": null,
+    "matriculas_yoy_valor": null,
+    "ingresantes": "N/D — Escala anual",
+    "ingresantes_yoy": null,
+    "ingresantes_yoy_valor": null,
+    "market_share_matriculas": 0.118,
+    "market_share_ingresantes": null
+  },
+  "MERCADO": {
+    "matriculas": 52500,
+    "ingresantes": 18250,
+    "cantidad_universidades": 42,
+    "cantidad_programas": 185
+  },
+  "RANKING": {
+    "posicion_ucsp": 5,
+    "total_universidades": 42,
+    "lider": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS",
+    "matriculas_lider": 14300,
+    "brecha_vs_lider": -8100,
+    "universidad_lider_es_ucsp": false
+  },
+  "TOP3_PLUS_UCSP": [
+    { "universidad": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS", "posicion": 1, "matriculas": 14300, "es_ucsp": false },
+    { "universidad": "UNIVERSIDAD NACIONAL DE INGENIERÍA", "posicion": 2, "matriculas": 9900, "es_ucsp": false },
+    { "universidad": "UNIVERSIDAD CATÓLICA DEL PERÚ", "posicion": 3, "matriculas": 7800, "es_ucsp": false },
+    { "universidad": "UNIVERSIDAD CATÓLICA DE SANTA MARÍA", "posicion": 5, "matriculas": 6200, "es_ucsp": true }
+  ],
+  "TENDENCIA_MATRICULAS": [
+    { "anio": 2021, "semestre": 1, "matriculas": 4200 },
+    { "anio": 2022, "semestre": 1, "matriculas": 4600 },
+    { "anio": 2023, "semestre": 1, "matriculas": 5100 },
+    { "anio": 2024, "semestre": 1, "matriculas": 5700 },
+    { "anio": 2025, "semestre": 1, "matriculas": 6200 }
+  ],
+  "TENDENCIA_INGRESANTES": [
+    { "anio": 2021, "ingresantes": 2100 },
+    { "anio": 2022, "ingresantes": 2350 },
+    { "anio": 2023, "ingresantes": 2600 },
+    { "anio": 2024, "ingresantes": 2750 },
+    { "anio": 2025, "ingresantes": 2850 }
+  ],
+  "meta": {
+    "contract_version": "1.0",
+    "generated_at": "2026-08-28T10:00:00Z",
+    "source_measures_count": 31,
+    "warnings": []
+  }
+}

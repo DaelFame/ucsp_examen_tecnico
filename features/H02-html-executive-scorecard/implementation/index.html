@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Executive Scorecard — Matrículas e Ingresantes UCSP. Presentación del contrato H02 v1.0.">
+  <meta name="theme-color" content="#0D1117">
+  <title>Executive Scorecard UCSP</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/states.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Selector de mocks (solo desarrollo) -->
+  <div id="mock-selector" class="mock-selector" role="region" aria-label="Selector de datos de desarrollo">
+    <label for="mock-select">Mock:</label>
+    <select id="mock-select">
+      <option value="">— Seleccionar —</option>
+    </select>
+  </div>
+
+  <div id="app" role="application" aria-label="Executive Scorecard UCSP">
+    <header id="app-header" class="app-header" role="banner">
+      <div id="header-contexto" class="header-contexto" aria-live="polite" aria-atomic="true"></div>
+    </header>
+
+    <main id="main-content" class="app-main" role="main">
+      <div id="d003-banner" class="d003-banner" role="alert" aria-live="assertive" hidden></div>
+
+      <div id="global-state" class="global-state" role="status" aria-live="polite" hidden></div>
+
+      <section id="kpi-grid" class="kpi-grid" aria-label="Indicadores clave">
+        <div id="kpi-matriculas" class="kpi-slot" role="region" aria-label="Matrículas UCSP"></div>
+        <div id="kpi-ingresantes" class="kpi-slot" role="region" aria-label="Ingresantes UCSP"></div>
+        <div id="kpi-market-share-matriculas" class="kpi-slot" role="region" aria-label="Cuota de matrículas"></div>
+        <div id="kpi-market-share-ingresantes" class="kpi-slot" role="region" aria-label="Cuota de ingresantes"></div>
+      </section>
+
+      <section id="ranking-section" class="ranking-section" aria-label="Ranking por matrículas">
+        <div id="top3-plus-ucsp" class="top3-slot" role="region" aria-label="Top 3 y UCSP"></div>
+        <div id="ranking-table" class="ranking-slot" role="region" aria-label="Ranking por matrículas"></div>
+      </section>
+
+      <section id="trends-section" class="trends-section" aria-label="Tendencias">
+        <div id="trend-matriculas" class="trend-slot" role="region" aria-label="Tendencia de matrículas"></div>
+        <div id="trend-ingresantes" class="trend-slot" role="region" aria-label="Tendencia de ingresantes"></div>
+      </section>
+    </main>
+
+    <footer id="app-footer" class="app-footer" role="contentinfo">
+      <div id="footer-meta" class="footer-meta"></div>
+    </footer>
+  </div>
+
+  <!-- Core -->
+  <script src="js/contract/guards.js"></script>
+  <script src="js/contract/validator.js"></script>
+  <script src="js/utils/formatters.js"></script>
+  <script src="js/utils/dom.js"></script>
+  <script src="js/utils/accessibility.js"></script>
+  <script src="js/state/store.js"></script>
+
+  <!-- Componentes -->
+  <script src="html/components/charts.js"></script>
+  <script src="html/components/header.js"></script>
+  <script src="html/components/banner.js"></script>
+  <script src="html/components/kpis.js"></script>
+  <script src="html/components/ranking.js"></script>
+  <script src="html/components/top3.js"></script>
+  <script src="html/components/trends.js"></script>
+
+  <!-- Datos de desarrollo + bootstrap -->
+  <script src="js/mocks.js"></script>
+  <script src="js/mocks-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

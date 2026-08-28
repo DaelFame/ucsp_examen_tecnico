@@ -1,0 +1,32 @@
+/* ============================================================
+   H02 — Executive Scorecard
+   print.css — Estilos de impresión (solo datos)
+   ============================================================ */
+
+@media print {
+  .mock-selector,
+  .app-header .header-skeleton,
+  .skeleton-block {
+    display: none !important;
+  }
+
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  .app-header {
+    position: static !important;
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #000 !important;
+  }
+
+  .kpi-slot,
+  .top3-slot,
+  .ranking-slot,
+  .trend-slot {
+    break-inside: avoid;
+  }
+
+  .d003-banner { color: #000 !important; }
+}

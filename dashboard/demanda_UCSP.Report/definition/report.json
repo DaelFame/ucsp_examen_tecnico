@@ -24,6 +24,19 @@
           }
         }
       }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
     ]
   },
   "publicCustomVisuals": [
@@ -38,6 +51,22 @@
           "name": "Fluent2-CY26SU08",
           "path": "BaseThemes/Fluent2-CY26SU08.json",
           "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "screen3166106378527611.png",
+          "path": "screen3166106378527611.png",
+          "type": "Image"
+        },
+        {
+          "name": "screen7153877577258146.png",
+          "path": "screen7153877577258146.png",
+          "type": "Image"
         }
       ]
     }

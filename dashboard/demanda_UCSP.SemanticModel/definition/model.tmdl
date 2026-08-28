@@ -20,6 +20,9 @@ ref table dim_ubicacion
 ref table dim_programa
 ref table dim_periodo
 ref table dim_local
+ref table Medidas
+ref table HTML1
+ref table Dim_Zona
 
 ref cultureInfo es-ES
 

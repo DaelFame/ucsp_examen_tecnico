@@ -1,0 +1,190 @@
+table Medidas
+	isHidden
+	lineageTag: 93a44533-bb43-4af5-8631-e62463f9a0dd
+
+	measure 'Total Ingresantes' = SUM('fact_ingresantes_dashboard'[Conteo_Ingresantes])
+		lineageTag: c86e6ff2-ec82-4989-9e48-9dc554ed069f
+
+	measure 'Total Matriculados' = SUM('fact_matriculados_dashboard'[Conteo_Matriculados])
+		lineageTag: b458bcff-0132-4a4f-be53-e6960911a9e3
+
+	measure 'QA - Filas Ingresantes' = COUNTROWS('fact_ingresantes_dashboard')
+		lineageTag: 9bae0a6c-0958-48ac-b60c-ddb32e72a368
+
+	measure 'QA - SUM Ingresantes' = SUM('fact_ingresantes_dashboard'[Conteo_Ingresantes])
+		lineageTag: e8f62941-f681-4f22-b0e5-7487faae5f21
+
+	measure 'QA - Filas Matriculados' = COUNTROWS('fact_matriculados_dashboard')
+		lineageTag: adef6f70-50d3-48d2-a873-ea5e17455c3c
+
+	measure 'Total Ingresantes UCSP' = CALCULATE([Total Ingresantes (Año)], 'dim_universidad'[CODIGO_INEI] = "260000062")
+		lineageTag: 6332aae8-c18d-48b7-b010-39bf2d5950d9
+
+	measure 'Total Matriculados UCSP' = CALCULATE([Total Matriculados], 'dim_universidad'[CODIGO_INEI] = "260000062")
+		lineageTag: 32f41553-f1de-4c0f-a97d-9660a2fd9cad
+
+	measure 'Ingresantes Año Anterior' = CALCULATE([Total Ingresantes (Año)], 'dim_periodo'[ANIO] = MAX('dim_periodo'[ANIO]) - 1)
+		lineageTag: 76ced153-857c-41f2-99f1-7ebd8261c6ce
+
+	measure 'Variación % Ingresantes YoY' = DIVIDE([Total Ingresantes (Año)] - [Ingresantes Año Anterior], [Ingresantes Año Anterior])
+		lineageTag: fa5f2061-856b-4c76-8ed8-186a9ce37a56
+
+	measure 'Total Matriculados Semestre Anterior' = CALCULATE([Total Matriculados], 'dim_periodo'[ANIO] = MAX('dim_periodo'[ANIO]) - IF(MAX('dim_periodo'[SEMESTRE]) = 1, 1, 0), 'dim_periodo'[SEMESTRE] = IF(MAX('dim_periodo'[SEMESTRE]) = 1, 2, MAX('dim_periodo'[SEMESTRE]) - 1))
+		lineageTag: 61b39c5c-e6ed-4f95-b95e-97437db94200
+
+	measure 'Variación % Matriculados Semestre' = DIVIDE([Total Matriculados] - [Total Matriculados Semestre Anterior], [Total Matriculados Semestre Anterior])
+		lineageTag: f825f3ff-7ca0-4f43-bad1-196641009077
+
+	measure 'Rango Programas Ingresantes' = RANKX(ALLSELECTED('dim_programa'[SK_Programa]), [Total Ingresantes (Año)], , DESC, Dense)
+		lineageTag: 1e012fc5-e9f3-4214-beb1-8160657f77d7
+
+	measure 'Top 5 Programas por Ingresantes' = CALCULATE([Total Ingresantes (Año)], TOPN(5, ALLSELECTED('dim_programa'[SK_Programa]), [Total Ingresantes (Año)], DESC))
+		lineageTag: c4736d8f-c381-4495-9686-23aaa5198d7a
+
+	measure 'Bottom 5 Programas por Ingresantes' = CALCULATE([Total Ingresantes (Año)], TOPN(5, ALLSELECTED('dim_programa'[SK_Programa]), [Total Ingresantes (Año)], ASC))
+		lineageTag: 0e8fed39-7270-4e3d-827e-58a9c801220b
+
+	measure 'Rango Programas Matriculados' = RANKX(ALLSELECTED('dim_programa'[SK_Programa]), [Total Matriculados], , DESC, Dense)
+		lineageTag: 2cf3e435-3fb0-4ea0-9df3-ef1a4175a9c9
+
+	measure 'Top 5 Programas por Matriculados' = CALCULATE([Total Matriculados], TOPN(5, ALLSELECTED('dim_programa'[SK_Programa]), [Total Matriculados], DESC))
+		lineageTag: 5c3fcc06-0d6a-4ba8-acd5-8bcf15e7fda4
+
+	measure 'Bottom 5 Programas por Matriculados' = CALCULATE([Total Matriculados], TOPN(5, ALLSELECTED('dim_programa'[SK_Programa]), [Total Matriculados], ASC))
+		lineageTag: bf7fc8e3-18a1-400f-b488-88681eb1e610
+
+	measure 'Total Ingresantes (Año)' = CALCULATE([Total Ingresantes], REMOVEFILTERS('dim_periodo'[SEMESTRE]))
+		lineageTag: f2b56aba-56c2-4b8a-9b95-0f5e738703ab
+
+	measure 'QA - SUM Matriculados' = SUM('fact_matriculados_dashboard'[Conteo_Matriculados])
+		lineageTag: 9a094287-3c8f-44d9-80c5-ff04f16b94e4
+
+	measure 'Total Matrículas' = SUM('fact_matriculados_dashboard'[Conteo_Matriculados])
+		lineageTag: 91b7eb1a-90e0-4447-9f01-7a68f8664d31
+
+	measure 'Total Matrículas UCSP' =
+			CALCULATE(
+				[Total Matrículas],
+				REMOVEFILTERS('dim_universidad'),
+				'dim_universidad'[CODIGO_INEI] = "260000062"
+			)
+		lineageTag: 7f349d86-c331-48ec-9380-4c71ffa0130c
+
+	measure 'Total Matrículas Mercado' =
+			CALCULATE(
+				[Total Matrículas],
+				ALLSELECTED('dim_universidad'[NOMBRE_ENTIDAD])
+			)
+		lineageTag: c8b7ed2d-f95f-4b41-8faa-89ed81db8b79
+
+	measure 'Market Share Matrículas' = DIVIDE([Total Matrículas UCSP], [Total Matrículas Mercado])
+		lineageTag: 8d1d4844-1dfb-445e-9a2f-dd9398b12a00
+
+	measure 'Ranking Matrículas' =
+			RANKX(
+				ALLSELECTED('dim_universidad'[NOMBRE_ENTIDAD]),
+				[Total Matrículas],
+				,
+				DESC,
+				Dense
+			)
+		lineageTag: 917cb1ca-3669-40b2-9ea5-1f8f8893c848
+
+	measure 'Posición UCSP Matrículas' =
+			VAR Universo =
+				ALLSELECTED('dim_universidad'[NOMBRE_ENTIDAD])
+			
+			VAR ValorUCSP =
+				CALCULATE(
+					[Total Matrículas],
+					REMOVEFILTERS('dim_universidad'),
+					'dim_universidad'[CODIGO_INEI] = "260000062"
+				)
+			
+			RETURN
+				IF(
+					ISBLANK(ValorUCSP),
+					BLANK(),
+					RANKX(
+						Universo,
+						[Total Matrículas],
+						ValorUCSP,
+						DESC,
+						DENSE
+					)
+				)
+		lineageTag: 7e934465-b78e-4d0b-82cc-de0991ffcce9
+
+	measure 'Total Universidades' =
+			CALCULATE(
+				DISTINCTCOUNT('dim_universidad'[NOMBRE_ENTIDAD]),
+				ALLSELECTED('dim_universidad'[NOMBRE_ENTIDAD])
+			)
+		lineageTag: 0add6813-3502-4d69-b3ee-bd16e1e9b2f0
+
+	measure 'Universidad Líder Matrículas' =
+			MAXX(
+				TOPN(1, ALLSELECTED('dim_universidad'[NOMBRE_ENTIDAD]), [Total Matrículas]),
+				'dim_universidad'[NOMBRE_ENTIDAD]
+			)
+		lineageTag: 143e432c-5970-4d1a-be9b-83a1062d1656
+
+	measure 'Matrículas Líder' =
+			MAXX(
+				TOPN(1, ALLSELECTED('dim_universidad'[NOMBRE_ENTIDAD]), [Total Matrículas]),
+				[Total Matrículas]
+			)
+		lineageTag: 2591c522-702b-4562-bee7-b317e55dab3e
+
+	measure 'Brecha Matrículas vs Líder' = [Total Matrículas UCSP] - [Matrículas Líder]
+		lineageTag: 769f8cae-bd26-46ef-b312-58604bb77998
+
+	measure 'Total Ingresantes Mercado' =
+			CALCULATE(
+				[Total Ingresantes (Año)],
+				ALLSELECTED('dim_universidad'[NOMBRE_ENTIDAD])
+			)
+		lineageTag: b12822b2-7876-4257-a096-08995d3a5a19
+
+	measure 'Market Share Ingresantes' = DIVIDE([Total Ingresantes UCSP], [Total Ingresantes Mercado])
+		lineageTag: 2b487437-9641-401e-8820-ab37845629ff
+
+	measure 'Promedio Matrículas Mercado' =
+			
+			DIVIDE(
+			    [Total Matrículas Mercado],
+			    [Total Universidades]
+			)
+		lineageTag: 42012bfe-a1db-4235-b258-a9e94ebdced5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Promedio Ingresantes Mercado' =
+			
+			DIVIDE(
+			    [Total Ingresantes Mercado],
+			    [Total Universidades]
+			)
+		lineageTag: c388a8af-da70-491a-8627-3b6fda70b572
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _Medidas
+		dataType: string
+		isHidden
+		lineageTag: e7d2c52c-776c-4ee8-b3b6-a4897eb8c319
+		summarizeBy: none
+		sourceColumn: _Medidas
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [_Medidas = text], {{"Medidas"}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

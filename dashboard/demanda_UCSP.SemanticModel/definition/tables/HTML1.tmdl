@@ -1,0 +1,3976 @@
+table HTML1
+	lineageTag: a452d8df-bce4-48df-96e9-51b440de026b
+
+	measure HTML_KPI_Matriculas =
+			
+			VAR TotalMercado = [Total Matrículas]
+			
+			VAR UCSPReferencia =
+			    CALCULATE(
+			        [Total Matrículas],
+			        REMOVEFILTERS('dim_ubicacion'),
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR IndiceHipotetico =
+			    DIVIDE(UCSPReferencia, TotalMercado)
+			
+			VAR MercadoFormateado =
+			    FORMAT(TotalMercado, "#,##0")
+			
+			VAR UCSPFormateado =
+			    FORMAT(UCSPReferencia, "#,##0")
+			
+			VAR IndiceFormateado =
+			    FORMAT(IndiceHipotetico, "0.0%")
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:7px;
+			    padding:11px 14px;
+			    font-family:Inter,Arial,sans-serif;
+			    display:flex;
+			    flex-direction:column;
+			    justify-content:space-between;
+			    overflow:hidden;
+			'>
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			    '>
+			        <span style='
+			            color:#c6c6cb;
+			            font-size:9px;
+			            font-weight:500;
+			            letter-spacing:0.08em;
+			            text-transform:uppercase;
+			        '>
+			            MATRÍCULAS
+			        </span>
+			
+			        <span style='
+			            color:#2fd9f4;
+			            font-size:11px;
+			        '>
+			            ●
+			        </span>
+			    </div>
+			
+			
+			    <div>
+			        <div style='
+			            color:#dee2ec;
+			            font-size:25px;
+			            line-height:28px;
+			            font-weight:700;
+			            letter-spacing:-0.02em;
+			        '>
+			            " & MercadoFormateado & "
+			        </div>
+			
+			        <div style='
+			            color:#797d85;
+			            font-size:8px;
+			            margin-top:1px;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            TOTAL MERCADO
+			        </div>
+			    </div>
+			
+			
+			    <div style='
+			        height:1px;
+			        background:#30353d;
+			        margin:3px 0;
+			    '></div>
+			
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-end;
+			    '>
+			
+			        <div>
+			            <div style='
+			                color:#dee2ec;
+			                font-size:23px;
+			                line-height:25px;
+			                font-weight:700;
+			            '>
+			                " & UCSPFormateado & "
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:8px;
+			                margin-top:1px;
+			                letter-spacing:0.06em;
+			                text-transform:uppercase;
+			            '>
+			                REFERENCIA UCSP
+			            </div>
+			        </div>
+			
+			
+			        <div style='text-align:right;'>
+			            <div style='
+			                color:#2fd9f4;
+			                font-size:18px;
+			                line-height:21px;
+			                font-weight:700;
+			            '>
+			                " & IndiceFormateado & "
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:7px;
+			                margin-top:1px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                ÍNDICE HIPOTÉTICO
+			            </div>
+			        </div>
+			
+			    </div>
+			
+			
+			    <div style='
+			        color:#797d85;
+			        font-size:7px;
+			        line-height:9px;
+			        margin-top:2px;
+			    '>
+			        Comparación del volumen UCSP frente al mercado seleccionado.
+			    </div>
+			
+			</div>
+			"
+		lineageTag: b83625a1-6f73-411b-9048-138636bc2c1f
+
+	measure HTML_KPI_Ingresantes =
+			
+			VAR TotalMercado = [Total Ingresantes]
+			
+			VAR UCSPReferencia =
+			    CALCULATE(
+			        [Total Ingresantes],
+			        REMOVEFILTERS('dim_ubicacion'),
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR IndiceHipotetico =
+			    DIVIDE(UCSPReferencia, TotalMercado)
+			
+			VAR MercadoFormateado =
+			    FORMAT(TotalMercado, "#,##0")
+			
+			VAR UCSPFormateado =
+			    FORMAT(UCSPReferencia, "#,##0")
+			
+			VAR IndiceFormateado =
+			    FORMAT(IndiceHipotetico, "0.0%")
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:7px;
+			    padding:11px 14px;
+			    font-family:Inter,Arial,sans-serif;
+			    display:flex;
+			    flex-direction:column;
+			    justify-content:space-between;
+			    overflow:hidden;
+			'>
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			    '>
+			        <span style='
+			            color:#c6c6cb;
+			            font-size:9px;
+			            font-weight:500;
+			            letter-spacing:0.08em;
+			            text-transform:uppercase;
+			        '>
+			            INGRESANTES
+			        </span>
+			
+			        <span style='
+			            color:#2fd9f4;
+			            font-size:11px;
+			        '>
+			            ●
+			        </span>
+			    </div>
+			
+			
+			    <div>
+			        <div style='
+			            color:#dee2ec;
+			            font-size:25px;
+			            line-height:28px;
+			            font-weight:700;
+			            letter-spacing:-0.02em;
+			        '>
+			            " & MercadoFormateado & "
+			        </div>
+			
+			        <div style='
+			            color:#797d85;
+			            font-size:8px;
+			            margin-top:1px;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            TOTAL MERCADO
+			        </div>
+			    </div>
+			
+			
+			    <div style='
+			        height:1px;
+			        background:#30353d;
+			        margin:3px 0;
+			    '></div>
+			
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-end;
+			    '>
+			
+			        <div>
+			            <div style='
+			                color:#dee2ec;
+			                font-size:23px;
+			                line-height:25px;
+			                font-weight:700;
+			            '>
+			                " & UCSPFormateado & "
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:8px;
+			                margin-top:1px;
+			                letter-spacing:0.06em;
+			                text-transform:uppercase;
+			            '>
+			                REFERENCIA UCSP
+			            </div>
+			        </div>
+			
+			
+			        <div style='text-align:right;'>
+			            <div style='
+			                color:#2fd9f4;
+			                font-size:18px;
+			                line-height:21px;
+			                font-weight:700;
+			            '>
+			                " & IndiceFormateado & "
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:7px;
+			                margin-top:1px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                ÍNDICE HIPOTÉTICO
+			            </div>
+			        </div>
+			
+			    </div>
+			
+			
+			    <div style='
+			        color:#797d85;
+			        font-size:7px;
+			        line-height:9px;
+			        margin-top:2px;
+			    '>
+			        Comparación del volumen UCSP frente al mercado seleccionado.
+			    </div>
+			
+			</div>
+			"
+		lineageTag: 6d1d15b2-080c-4cc8-8aa8-fc3fa2017613
+
+	measure HTML_KPI_Cuota_Matriculas =
+			
+			VAR Cuota = [Market Share Matrículas]
+			VAR CuotaFormateada =
+			    FORMAT(Cuota, "0.0%")
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:16px;
+			    font-family:Inter,Arial,sans-serif;
+			    display:flex;
+			    flex-direction:column;
+			    justify-content:space-between;
+			'>
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			    '>
+			        <span style='
+			            color:#c6c6cb;
+			            font-size:10px;
+			            font-weight:500;
+			            letter-spacing:0.08em;
+			            text-transform:uppercase;
+			        '>
+			            CUOTA MATRÍCULAS
+			        </span>
+			
+			        <span style='
+			            color:#2fd9f4;
+			            font-size:16px;
+			        '>
+			            ●
+			        </span>
+			    </div>
+			
+			    <div>
+			        <div style='
+			            color:#dee2ec;
+			            font-size:30px;
+			            line-height:36px;
+			            font-weight:700;
+			            letter-spacing:-0.02em;
+			        '>
+			            " & CuotaFormateada & "
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:9px;
+			            margin-top:3px;
+			            letter-spacing:0.05em;
+			            text-transform:uppercase;
+			        '>
+			            MARKET SHARE UCSP
+			        </div>
+			    </div>
+			
+			    <div style='
+			        border-top:1px solid #30353d;
+			        padding-top:7px;
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			    '>
+			        <span style='
+			            color:#8f9095;
+			            font-size:9px;
+			            letter-spacing:0.04em;
+			            text-transform:uppercase;
+			        '>
+			            Participación del mercado
+			        </span>
+			
+			        <span style='
+			            color:#c6c6cb;
+			            font-size:10px;
+			        '>
+			            UCSP
+			        </span>
+			    </div>
+			</div>
+			"
+		lineageTag: c33cd9b4-2bc9-4b84-b806-dc632d2cead2
+
+	measure HTML_KPI_Cuota_Ingresantes =
+			
+			VAR Cuota = [Market Share Ingresantes]
+			VAR CuotaFormateada =
+			    FORMAT(Cuota, "0.0%")
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:16px;
+			    font-family:Inter,Arial,sans-serif;
+			    display:flex;
+			    flex-direction:column;
+			    justify-content:space-between;
+			'>
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			    '>
+			        <span style='
+			            color:#c6c6cb;
+			            font-size:10px;
+			            font-weight:500;
+			            letter-spacing:0.08em;
+			            text-transform:uppercase;
+			        '>
+			            CUOTA INGRESANTES
+			        </span>
+			
+			        <span style='
+			            color:#2fd9f4;
+			            font-size:16px;
+			        '>
+			            ●
+			        </span>
+			    </div>
+			
+			    <div>
+			        <div style='
+			            color:#dee2ec;
+			            font-size:30px;
+			            line-height:36px;
+			            font-weight:700;
+			            letter-spacing:-0.02em;
+			        '>
+			            " & CuotaFormateada & "
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:9px;
+			            margin-top:3px;
+			            letter-spacing:0.05em;
+			            text-transform:uppercase;
+			        '>
+			            MARKET SHARE UCSP
+			        </div>
+			    </div>
+			
+			    <div style='
+			        border-top:1px solid #30353d;
+			        padding-top:7px;
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			    '>
+			        <span style='
+			            color:#8f9095;
+			            font-size:9px;
+			            letter-spacing:0.04em;
+			            text-transform:uppercase;
+			        '>
+			            Participación del mercado
+			        </span>
+			
+			        <span style='
+			            color:#c6c6cb;
+			            font-size:10px;
+			        '>
+			            UCSP
+			        </span>
+			    </div>
+			</div>
+			"
+		lineageTag: 1562c1a2-f9ed-400d-ae59-82e1fe962d69
+
+	measure HTML_Ranking_Top3_UCSP =
+			
+			VAR Universo =
+			    ALLSELECTED(
+			        'dim_universidad'[NOMBRE_ENTIDAD]
+			    )
+			
+			VAR Top3 =
+			    TOPN(
+			        3,
+			        Universo,
+			        [Total Matrículas],
+			        DESC,
+			        'dim_universidad'[NOMBRE_ENTIDAD],
+			        ASC
+			    )
+			
+			VAR Top1 =
+			    TOPN(
+			        1,
+			        Top3,
+			        [Total Matrículas],
+			        DESC,
+			        'dim_universidad'[NOMBRE_ENTIDAD],
+			        ASC
+			    )
+			
+			VAR Top2 =
+			    TOPN(
+			        2,
+			        Top3,
+			        [Total Matrículas],
+			        DESC,
+			        'dim_universidad'[NOMBRE_ENTIDAD],
+			        ASC
+			    )
+			
+			VAR Top1Nombre =
+			    MAXX(
+			        Top1,
+			        'dim_universidad'[NOMBRE_ENTIDAD]
+			    )
+			
+			VAR Top1Valor =
+			    MAXX(
+			        Top1,
+			        [Total Matrículas]
+			    )
+			
+			VAR Top2Nombre =
+			    MAXX(
+			        EXCEPT(Top2, Top1),
+			        'dim_universidad'[NOMBRE_ENTIDAD]
+			    )
+			
+			VAR Top2Valor =
+			    MAXX(
+			        EXCEPT(Top2, Top1),
+			        [Total Matrículas]
+			    )
+			
+			VAR Top3Nombre =
+			    MAXX(
+			        EXCEPT(
+			            Top3,
+			            Top2
+			        ),
+			        'dim_universidad'[NOMBRE_ENTIDAD]
+			    )
+			
+			VAR Top3Valor =
+			    MAXX(
+			        EXCEPT(
+			            Top3,
+			            Top2
+			        ),
+			        [Total Matrículas]
+			    )
+			
+			VAR UcspValor =
+			    CALCULATE(
+			        [Total Matrículas],
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR UcspPosicion =
+			    [Posición UCSP Matrículas]
+			
+			VAR Top1Formateado =
+			    FORMAT(Top1Valor, "#,##0")
+			
+			VAR Top2Formateado =
+			    FORMAT(Top2Valor, "#,##0")
+			
+			VAR Top3Formateado =
+			    FORMAT(Top3Valor, "#,##0")
+			
+			VAR UcspFormateado =
+			    FORMAT(UcspValor, "#,##0")
+			
+			VAR PosicionFormateada =
+			    IF(
+			        ISBLANK(UcspPosicion),
+			        "—",
+			        "#" & FORMAT(UcspPosicion, "0")
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:14px 16px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			'>
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			        margin-bottom:9px;
+			    '>
+			        <div style='
+			            color:#dee2ec;
+			            font-size:10px;
+			            font-weight:600;
+			            letter-spacing:0.08em;
+			            text-transform:uppercase;
+			        '>
+			            RANKING POR MATRÍCULAS
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            TOP 3 + UCSP
+			        </div>
+			    </div>
+			
+			
+			    <!-- TOP 1 -->
+			    <div style='
+			        display:flex;
+			        align-items:center;
+			        justify-content:space-between;
+			        padding:8px 9px;
+			        margin-bottom:4px;
+			        background:#20262e;
+			        border-radius:5px;
+			    '>
+			
+			        <div style='
+			            display:flex;
+			            align-items:center;
+			            gap:9px;
+			            min-width:0;
+			        '>
+			
+			            <span style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:15px;
+			                font-weight:700;
+			                min-width:24px;
+			            '>
+			                01
+			            </span>
+			
+			            <span style='
+			                color:#dee2ec;
+			                font-size:11px;
+			                font-weight:500;
+			                white-space:nowrap;
+			                overflow:hidden;
+			                text-overflow:ellipsis;
+			            '>
+			                " & Top1Nombre & "
+			            </span>
+			
+			        </div>
+			
+			        <span style='
+			            color:#ffffff;
+			            font-family:JetBrains Mono,monospace;
+			            font-size:15px;
+			            font-weight:700;
+			            margin-left:10px;
+			        '>
+			            " & Top1Formateado & "
+			        </span>
+			
+			    </div>
+			
+			
+			    <!-- TOP 2 -->
+			    <div style='
+			        display:flex;
+			        align-items:center;
+			        justify-content:space-between;
+			        padding:8px 9px;
+			        margin-bottom:4px;
+			        background:#1d232a;
+			        border-radius:5px;
+			    '>
+			
+			        <div style='
+			            display:flex;
+			            align-items:center;
+			            gap:9px;
+			            min-width:0;
+			        '>
+			
+			            <span style='
+			                color:#8f9095;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:14px;
+			                font-weight:600;
+			                min-width:24px;
+			            '>
+			                02
+			            </span>
+			
+			            <span style='
+			                color:#c6c6cb;
+			                font-size:11px;
+			                font-weight:500;
+			                white-space:nowrap;
+			                overflow:hidden;
+			                text-overflow:ellipsis;
+			            '>
+			                " & Top2Nombre & "
+			            </span>
+			
+			        </div>
+			
+			        <span style='
+			            color:#dee2ec;
+			            font-family:JetBrains Mono,monospace;
+			            font-size:14px;
+			            font-weight:700;
+			            margin-left:10px;
+			        '>
+			            " & Top2Formateado & "
+			        </span>
+			
+			    </div>
+			
+			
+			    <!-- TOP 3 -->
+			    <div style='
+			        display:flex;
+			        align-items:center;
+			        justify-content:space-between;
+			        padding:8px 9px;
+			        margin-bottom:8px;
+			        background:#1d232a;
+			        border-radius:5px;
+			    '>
+			
+			        <div style='
+			            display:flex;
+			            align-items:center;
+			            gap:9px;
+			            min-width:0;
+			        '>
+			
+			            <span style='
+			                color:#8f9095;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:14px;
+			                font-weight:600;
+			                min-width:24px;
+			            '>
+			                03
+			            </span>
+			
+			            <span style='
+			                color:#c6c6cb;
+			                font-size:11px;
+			                font-weight:500;
+			                white-space:nowrap;
+			                overflow:hidden;
+			                text-overflow:ellipsis;
+			            '>
+			                " & Top3Nombre & "
+			            </span>
+			
+			        </div>
+			
+			        <span style='
+			            color:#dee2ec;
+			            font-family:JetBrains Mono,monospace;
+			            font-size:14px;
+			            font-weight:700;
+			            margin-left:10px;
+			        '>
+			            " & Top3Formateado & "
+			        </span>
+			
+			    </div>
+			
+			
+			    <!-- UCSP -->
+			    <div style='
+			        border-top:1px solid #45474b;
+			        padding-top:9px;
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			    '>
+			
+			        <div style='
+			            display:flex;
+			            align-items:center;
+			            gap:9px;
+			            min-width:0;
+			        '>
+			
+			            <span style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:15px;
+			                font-weight:700;
+			                min-width:35px;
+			            '>
+			                " & PosicionFormateada & "
+			            </span>
+			
+			            <span style='
+			                color:#dee2ec;
+			                font-size:11px;
+			                font-weight:700;
+			            '>
+			                UCSP
+			            </span>
+			
+			        </div>
+			
+			        <div style='text-align:right;'>
+			
+			            <div style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:17px;
+			                line-height:20px;
+			                font-weight:700;
+			            '>
+			                " & UcspFormateado & "
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:7px;
+			                margin-top:1px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                MATRÍCULAS UCSP
+			            </div>
+			
+			        </div>
+			
+			    </div>
+			
+			</div>
+			"
+		lineageTag: a17c9b8d-3582-4199-81b7-8f5c26f851a3
+
+	measure HTML_Tendencia_Matriculas =
+			
+			VAR U2020 =
+			    CALCULATE(
+			        [Total Matrículas],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2020,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2021 =
+			    CALCULATE(
+			        [Total Matrículas],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2021,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2022 =
+			    CALCULATE(
+			        [Total Matrículas],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2022,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2023 =
+			    CALCULATE(
+			        [Total Matrículas],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2023,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2024 =
+			    CALCULATE(
+			        [Total Matrículas],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2024,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2025 =
+			    CALCULATE(
+			        [Total Matrículas],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2025,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR M2020 =
+			    CALCULATE(
+			        [Promedio Matrículas Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2020
+			    )
+			
+			VAR M2021 =
+			    CALCULATE(
+			        [Promedio Matrículas Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2021
+			    )
+			
+			VAR M2022 =
+			    CALCULATE(
+			        [Promedio Matrículas Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2022
+			    )
+			
+			VAR M2023 =
+			    CALCULATE(
+			        [Promedio Matrículas Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2023
+			    )
+			
+			VAR M2024 =
+			    CALCULATE(
+			        [Promedio Matrículas Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2024
+			    )
+			
+			VAR M2025 =
+			    CALCULATE(
+			        [Promedio Matrículas Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2025
+			    )
+			
+			VAR Minimo =
+			    MIN(
+			        MIN(U2020, U2021),
+			        MIN(
+			            MIN(U2022, U2023),
+			            MIN(
+			                MIN(U2024, U2025),
+			                MIN(
+			                    MIN(M2020, M2021),
+			                    MIN(
+			                        MIN(M2022, M2023),
+			                        MIN(M2024, M2025)
+			                    )
+			                )
+			            )
+			        )
+			    )
+			
+			VAR Maximo =
+			    MAX(
+			        MAX(U2020, U2021),
+			        MAX(
+			            MAX(U2022, U2023),
+			            MAX(
+			                MAX(U2024, U2025),
+			                MAX(
+			                    MAX(M2020, M2021),
+			                    MAX(
+			                        MAX(M2022, M2023),
+			                        MAX(M2024, M2025)
+			                    )
+			                )
+			            )
+			        )
+			    )
+			
+			VAR Rango =
+			    IF(
+			        ISBLANK(Minimo)
+			            || ISBLANK(Maximo)
+			            || Minimo = Maximo,
+			        1,
+			        Maximo - Minimo
+			    )
+			
+			VAR EscalaMin =
+			    MAX(
+			        0,
+			        Minimo - Rango * 0.10
+			    )
+			
+			VAR EscalaMax =
+			    Maximo + Rango * 0.10
+			
+			VAR EscalaRango =
+			    IF(
+			        EscalaMax = EscalaMin,
+			        1,
+			        EscalaMax - EscalaMin
+			    )
+			
+			VAR X1 = 70
+			VAR X2 = 180
+			VAR X3 = 290
+			VAR X4 = 400
+			VAR X5 = 510
+			VAR X6 = 620
+			
+			VAR YBase = 175
+			VAR Altura = 125
+			
+			VAR YU1 =
+			    YBase -
+			    DIVIDE(
+			        U2020 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU2 =
+			    YBase -
+			    DIVIDE(
+			        U2021 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU3 =
+			    YBase -
+			    DIVIDE(
+			        U2022 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU4 =
+			    YBase -
+			    DIVIDE(
+			        U2023 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU5 =
+			    YBase -
+			    DIVIDE(
+			        U2024 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU6 =
+			    YBase -
+			    DIVIDE(
+			        U2025 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM1 =
+			    YBase -
+			    DIVIDE(
+			        M2020 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM2 =
+			    YBase -
+			    DIVIDE(
+			        M2021 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM3 =
+			    YBase -
+			    DIVIDE(
+			        M2022 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM4 =
+			    YBase -
+			    DIVIDE(
+			        M2023 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM5 =
+			    YBase -
+			    DIVIDE(
+			        M2024 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM6 =
+			    YBase -
+			    DIVIDE(
+			        M2025 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR LineaUCSP =
+			    FORMAT(X1, "0") & "," & FORMAT(YU1, "0")
+			    & " " &
+			    FORMAT(X2, "0") & "," & FORMAT(YU2, "0")
+			    & " " &
+			    FORMAT(X3, "0") & "," & FORMAT(YU3, "0")
+			    & " " &
+			    FORMAT(X4, "0") & "," & FORMAT(YU4, "0")
+			    & " " &
+			    FORMAT(X5, "0") & "," & FORMAT(YU5, "0")
+			    & " " &
+			    FORMAT(X6, "0") & "," & FORMAT(YU6, "0")
+			
+			VAR LineaMercado =
+			    FORMAT(X1, "0") & "," & FORMAT(YM1, "0")
+			    & " " &
+			    FORMAT(X2, "0") & "," & FORMAT(YM2, "0")
+			    & " " &
+			    FORMAT(X3, "0") & "," & FORMAT(YM3, "0")
+			    & " " &
+			    FORMAT(X4, "0") & "," & FORMAT(YM4, "0")
+			    & " " &
+			    FORMAT(X5, "0") & "," & FORMAT(YM5, "0")
+			    & " " &
+			    FORMAT(X6, "0") & "," & FORMAT(YM6, "0")
+			
+			VAR UltimoAnio =
+			    MAXX(
+			        ALLSELECTED('dim_periodo'[ANIO]),
+			        'dim_periodo'[ANIO]
+			    )
+			
+			VAR PromedioMercadoActual =
+			    CALCULATE(
+			        [Promedio Matrículas Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = UltimoAnio
+			    )
+			
+			VAR PromedioMercadoFormateado =
+			    IF(
+			        ISBLANK(PromedioMercadoActual),
+			        "—",
+			        FORMAT(
+			            PromedioMercadoActual,
+			            "#,##0"
+			        )
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:12px 16px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			'>
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			        height:54px;
+			    '>
+			
+			        <div>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:14px;
+			                line-height:18px;
+			                font-weight:700;
+			                letter-spacing:0.06em;
+			                text-transform:uppercase;
+			            '>
+			                TENDENCIA DE MATRÍCULAS
+			            </div>
+			
+			            <div style='
+			                display:flex;
+			                gap:16px;
+			                margin-top:8px;
+			                color:#c6c6cb;
+			                font-size:10px;
+			                line-height:12px;
+			            '>
+			
+			                <span>
+			                    <span style='
+			                        display:inline-block;
+			                        width:8px;
+			                        height:8px;
+			                        border-radius:50%;
+			                        background:#2fd9f4;
+			                        margin-right:5px;
+			                    '></span>
+			                    UCSP
+			                </span>
+			
+			                <span>
+			                    <span style='
+			                        display:inline-block;
+			                        width:8px;
+			                        height:8px;
+			                        border-radius:50%;
+			                        background:#8f9095;
+			                        margin-right:5px;
+			                    '></span>
+			                    PROMEDIO MERCADO
+			                </span>
+			
+			            </div>
+			
+			        </div>
+			
+			        <div style='
+			            text-align:right;
+			            padding-right:4px;
+			        '>
+			
+			            <div style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:22px;
+			                line-height:24px;
+			                font-weight:700;
+			            '>
+			                " & PromedioMercadoFormateado & "
+			            </div>
+			
+			            <div style='
+			                color:#c6c6cb;
+			                font-size:9px;
+			                line-height:12px;
+			                margin-top:3px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                PROMEDIO MERCADO · " & FORMAT(UltimoAnio, "0") & "
+			            </div>
+			
+			        </div>
+			
+			    </div>
+			
+			
+			    <svg
+			        viewBox='0 0 690 215'
+			        preserveAspectRatio='none'
+			        style='
+			            width:100%;
+			            height:calc(100% - 54px);
+			            display:block;
+			        '
+			    >
+			
+			        <line
+			            x1='70'
+			            y1='40'
+			            x2='620'
+			            y2='40'
+			            stroke='#30353d'
+			            stroke-width='1'
+			            stroke-dasharray='4 4'
+			        />
+			
+			        <line
+			            x1='70'
+			            y1='105'
+			            x2='620'
+			            y2='105'
+			            stroke='#30353d'
+			            stroke-width='1'
+			            stroke-dasharray='4 4'
+			        />
+			
+			        <line
+			            x1='70'
+			            y1='170'
+			            x2='620'
+			            y2='170'
+			            stroke='#30353d'
+			            stroke-width='1'
+			            stroke-dasharray='4 4'
+			        />
+			
+			        <line
+			            x1='70'
+			            y1='175'
+			            x2='620'
+			            y2='175'
+			            stroke='#45474b'
+			            stroke-width='1'
+			        />
+			
+			        <polyline
+			            points='" & LineaMercado & "'
+			            fill='none'
+			            stroke='#8f9095'
+			            stroke-width='2.5'
+			            stroke-linecap='round'
+			            stroke-linejoin='round'
+			        />
+			
+			        <circle cx='" & X1 & "' cy='" & YM1 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X2 & "' cy='" & YM2 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X3 & "' cy='" & YM3 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X4 & "' cy='" & YM4 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X5 & "' cy='" & YM5 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X6 & "' cy='" & YM6 & "' r='3.5' fill='#8f9095'/>
+			
+			        <polyline
+			            points='" & LineaUCSP & "'
+			            fill='none'
+			            stroke='#2fd9f4'
+			            stroke-width='3'
+			            stroke-linecap='round'
+			            stroke-linejoin='round'
+			        />
+			
+			        <circle cx='" & X1 & "' cy='" & YU1 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X2 & "' cy='" & YU2 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X3 & "' cy='" & YU3 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X4 & "' cy='" & YU4 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X5 & "' cy='" & YU5 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X6 & "' cy='" & YU6 & "' r='4' fill='#2fd9f4'/>
+			
+			        <text
+			            x='70'
+			            y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'
+			        >2020</text>
+			
+			        <text
+			            x='180'
+			            y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'
+			        >2021</text>
+			
+			        <text
+			            x='290'
+			            y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'
+			        >2022</text>
+			
+			        <text
+			            x='400'
+			            y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'
+			        >2023</text>
+			
+			        <text
+			            x='510'
+			            y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'
+			        >2024</text>
+			
+			        <text
+			            x='620'
+			            y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'
+			        >2025</text>
+			
+			    </svg>
+			
+			</div>
+			"
+		lineageTag: 26e4e87a-5a94-41be-b27c-4aef5c2b79c1
+
+	measure HTML_Tendencia_Ingresantes =
+			
+			VAR U2020 =
+			    CALCULATE(
+			        [Total Ingresantes (Año)],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2020,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2021 =
+			    CALCULATE(
+			        [Total Ingresantes (Año)],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2021,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2022 =
+			    CALCULATE(
+			        [Total Ingresantes (Año)],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2022,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2023 =
+			    CALCULATE(
+			        [Total Ingresantes (Año)],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2023,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2024 =
+			    CALCULATE(
+			        [Total Ingresantes (Año)],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2024,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR U2025 =
+			    CALCULATE(
+			        [Total Ingresantes (Año)],
+			        REMOVEFILTERS('dim_periodo'),
+			        REMOVEFILTERS('dim_ubicacion'),
+			        REMOVEFILTERS('dim_universidad'),
+			        'dim_periodo'[ANIO] = 2025,
+			        'dim_universidad'[CODIGO_INEI] = "260000062"
+			    )
+			
+			VAR M2020 =
+			    CALCULATE(
+			        [Promedio Ingresantes Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2020
+			    )
+			
+			VAR M2021 =
+			    CALCULATE(
+			        [Promedio Ingresantes Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2021
+			    )
+			
+			VAR M2022 =
+			    CALCULATE(
+			        [Promedio Ingresantes Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2022
+			    )
+			
+			VAR M2023 =
+			    CALCULATE(
+			        [Promedio Ingresantes Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2023
+			    )
+			
+			VAR M2024 =
+			    CALCULATE(
+			        [Promedio Ingresantes Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2024
+			    )
+			
+			VAR M2025 =
+			    CALCULATE(
+			        [Promedio Ingresantes Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2025
+			    )
+			
+			VAR Minimo =
+			    MIN(
+			        MIN(U2020, U2021),
+			        MIN(
+			            MIN(U2022, U2023),
+			            MIN(
+			                MIN(U2024, U2025),
+			                MIN(
+			                    MIN(M2020, M2021),
+			                    MIN(
+			                        MIN(M2022, M2023),
+			                        MIN(M2024, M2025)
+			                    )
+			                )
+			            )
+			        )
+			    )
+			
+			VAR Maximo =
+			    MAX(
+			        MAX(U2020, U2021),
+			        MAX(
+			            MAX(U2022, U2023),
+			            MAX(
+			                MAX(U2024, U2025),
+			                MAX(
+			                    MAX(M2020, M2021),
+			                    MAX(
+			                        MAX(M2022, M2023),
+			                        MAX(M2024, M2025)
+			                    )
+			                )
+			            )
+			        )
+			    )
+			
+			VAR Rango =
+			    IF(
+			        ISBLANK(Minimo)
+			            || ISBLANK(Maximo)
+			            || Minimo = Maximo,
+			        1,
+			        Maximo - Minimo
+			    )
+			
+			VAR EscalaMin =
+			    MAX(
+			        0,
+			        Minimo - Rango * 0.10
+			    )
+			
+			VAR EscalaMax =
+			    Maximo + Rango * 0.10
+			
+			VAR EscalaRango =
+			    IF(
+			        EscalaMax = EscalaMin,
+			        1,
+			        EscalaMax - EscalaMin
+			    )
+			
+			VAR X1 = 70
+			VAR X2 = 180
+			VAR X3 = 290
+			VAR X4 = 400
+			VAR X5 = 510
+			VAR X6 = 620
+			
+			VAR YBase = 175
+			VAR Altura = 125
+			
+			VAR YU1 =
+			    YBase -
+			    DIVIDE(
+			        U2020 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU2 =
+			    YBase -
+			    DIVIDE(
+			        U2021 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU3 =
+			    YBase -
+			    DIVIDE(
+			        U2022 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU4 =
+			    YBase -
+			    DIVIDE(
+			        U2023 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU5 =
+			    YBase -
+			    DIVIDE(
+			        U2024 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YU6 =
+			    YBase -
+			    DIVIDE(
+			        U2025 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM1 =
+			    YBase -
+			    DIVIDE(
+			        M2020 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM2 =
+			    YBase -
+			    DIVIDE(
+			        M2021 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM3 =
+			    YBase -
+			    DIVIDE(
+			        M2022 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM4 =
+			    YBase -
+			    DIVIDE(
+			        M2023 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM5 =
+			    YBase -
+			    DIVIDE(
+			        M2024 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR YM6 =
+			    YBase -
+			    DIVIDE(
+			        M2025 - EscalaMin,
+			        EscalaRango
+			    ) * Altura
+			
+			VAR LineaUCSP =
+			    FORMAT(X1, "0") & "," & FORMAT(YU1, "0")
+			    & " " &
+			    FORMAT(X2, "0") & "," & FORMAT(YU2, "0")
+			    & " " &
+			    FORMAT(X3, "0") & "," & FORMAT(YU3, "0")
+			    & " " &
+			    FORMAT(X4, "0") & "," & FORMAT(YU4, "0")
+			    & " " &
+			    FORMAT(X5, "0") & "," & FORMAT(YU5, "0")
+			    & " " &
+			    FORMAT(X6, "0") & "," & FORMAT(YU6, "0")
+			
+			VAR LineaMercado =
+			    FORMAT(X1, "0") & "," & FORMAT(YM1, "0")
+			    & " " &
+			    FORMAT(X2, "0") & "," & FORMAT(YM2, "0")
+			    & " " &
+			    FORMAT(X3, "0") & "," & FORMAT(YM3, "0")
+			    & " " &
+			    FORMAT(X4, "0") & "," & FORMAT(YM4, "0")
+			    & " " &
+			    FORMAT(X5, "0") & "," & FORMAT(YM5, "0")
+			    & " " &
+			    FORMAT(X6, "0") & "," & FORMAT(YM6, "0")
+			
+			VAR UltimoAnio =
+			    MAXX(
+			        ALLSELECTED('dim_periodo'[ANIO]),
+			        'dim_periodo'[ANIO]
+			    )
+			
+			VAR PromedioMercadoActual =
+			    CALCULATE(
+			        [Promedio Ingresantes Mercado],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = UltimoAnio
+			    )
+			
+			VAR PromedioMercadoFormateado =
+			    IF(
+			        ISBLANK(PromedioMercadoActual),
+			        "—",
+			        FORMAT(
+			            PromedioMercadoActual,
+			            "#,##0"
+			        )
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:12px 16px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			'>
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			        height:54px;
+			    '>
+			
+			        <div>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:14px;
+			                line-height:18px;
+			                font-weight:700;
+			                letter-spacing:0.06em;
+			                text-transform:uppercase;
+			            '>
+			                TENDENCIA DE INGRESANTES
+			            </div>
+			
+			            <div style='
+			                display:flex;
+			                gap:16px;
+			                margin-top:8px;
+			                color:#c6c6cb;
+			                font-size:10px;
+			                line-height:12px;
+			            '>
+			
+			                <span>
+			                    <span style='
+			                        display:inline-block;
+			                        width:8px;
+			                        height:8px;
+			                        border-radius:50%;
+			                        background:#2fd9f4;
+			                        margin-right:5px;
+			                    '></span>
+			                    UCSP
+			                </span>
+			
+			                <span>
+			                    <span style='
+			                        display:inline-block;
+			                        width:8px;
+			                        height:8px;
+			                        border-radius:50%;
+			                        background:#8f9095;
+			                        margin-right:5px;
+			                    '></span>
+			                    PROMEDIO MERCADO
+			                </span>
+			
+			            </div>
+			
+			        </div>
+			
+			        <div style='
+			            text-align:right;
+			            padding-right:4px;
+			        '>
+			
+			            <div style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:22px;
+			                line-height:24px;
+			                font-weight:700;
+			            '>
+			                " & PromedioMercadoFormateado & "
+			            </div>
+			
+			            <div style='
+			                color:#c6c6cb;
+			                font-size:9px;
+			                line-height:12px;
+			                margin-top:3px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                PROMEDIO MERCADO · " & FORMAT(UltimoAnio, "0") & "
+			            </div>
+			
+			        </div>
+			
+			    </div>
+			
+			
+			    <svg
+			        viewBox='0 0 690 215'
+			        preserveAspectRatio='none'
+			        style='
+			            width:100%;
+			            height:calc(100% - 54px);
+			            display:block;
+			        '
+			    >
+			
+			        <line
+			            x1='70'
+			            y1='40'
+			            x2='620'
+			            y2='40'
+			            stroke='#30353d'
+			            stroke-width='1'
+			            stroke-dasharray='4 4'
+			        />
+			
+			        <line
+			            x1='70'
+			            y1='105'
+			            x2='620'
+			            y2='105'
+			            stroke='#30353d'
+			            stroke-width='1'
+			            stroke-dasharray='4 4'
+			        />
+			
+			        <line
+			            x1='70'
+			            y1='170'
+			            x2='620'
+			            y2='170'
+			            stroke='#30353d'
+			            stroke-width='1'
+			            stroke-dasharray='4 4'
+			        />
+			
+			        <line
+			            x1='70'
+			            y1='175'
+			            x2='620'
+			            y2='175'
+			            stroke='#45474b'
+			            stroke-width='1'
+			        />
+			
+			        <polyline
+			            points='" & LineaMercado & "'
+			            fill='none'
+			            stroke='#8f9095'
+			            stroke-width='2.5'
+			            stroke-linecap='round'
+			            stroke-linejoin='round'
+			        />
+			
+			        <circle cx='" & X1 & "' cy='" & YM1 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X2 & "' cy='" & YM2 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X3 & "' cy='" & YM3 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X4 & "' cy='" & YM4 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X5 & "' cy='" & YM5 & "' r='3.5' fill='#8f9095'/>
+			        <circle cx='" & X6 & "' cy='" & YM6 & "' r='3.5' fill='#8f9095'/>
+			
+			        <polyline
+			            points='" & LineaUCSP & "'
+			            fill='none'
+			            stroke='#2fd9f4'
+			            stroke-width='3'
+			            stroke-linecap='round'
+			            stroke-linejoin='round'
+			        />
+			
+			        <circle cx='" & X1 & "' cy='" & YU1 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X2 & "' cy='" & YU2 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X3 & "' cy='" & YU3 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X4 & "' cy='" & YU4 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X5 & "' cy='" & YU5 & "' r='4' fill='#2fd9f4'/>
+			        <circle cx='" & X6 & "' cy='" & YU6 & "' r='4' fill='#2fd9f4'/>
+			
+			        <text x='70' y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'>2020</text>
+			
+			        <text x='180' y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'>2021</text>
+			
+			        <text x='290' y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'>2022</text>
+			
+			        <text x='400' y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'>2023</text>
+			
+			        <text x='510' y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'>2024</text>
+			
+			        <text x='620' y='205'
+			            text-anchor='middle'
+			            fill='#c6c6cb'
+			            font-size='12'
+			            font-weight='500'
+			            font-family='Inter,Arial,sans-serif'>2025</text>
+			
+			    </svg>
+			
+			</div>
+			"
+		lineageTag: 9a67ad53-eae1-4e9f-bb5c-ba6e3c7153e0
+
+	measure HTML_Desglose_Programa_UCSP =
+			
+			VAR ProgramasMercado =
+			    ADDCOLUMNS(
+			        VALUES('dim_programa'[NOMBRE_PROGRAMA]),
+			        "MatriculasMercado",
+			            CALCULATE(
+			                [Total Matrículas],
+			                REMOVEFILTERS('dim_universidad')
+			            ),
+			        "MatriculasUCSP",
+			            CALCULATE(
+			                [Total Matrículas],
+			                REMOVEFILTERS('dim_universidad'),
+			                'dim_universidad'[CODIGO_INEI] = "260000062"
+			            )
+			    )
+			
+			VAR ProgramasValidos =
+			    FILTER(
+			        ProgramasMercado,
+			        NOT ISBLANK([MatriculasMercado])
+			            && [MatriculasMercado] > 0
+			    )
+			
+			VAR Top8 =
+			    TOPN(
+			        8,
+			        ProgramasValidos,
+			        [MatriculasMercado],
+			        DESC,
+			        'dim_programa'[NOMBRE_PROGRAMA],
+			        ASC
+			    )
+			
+			VAR Filas =
+			    CONCATENATEX(
+			        Top8,
+			
+			        VAR NombrePrograma =
+			            'dim_programa'[NOMBRE_PROGRAMA]
+			
+			        VAR Mercado =
+			            [MatriculasMercado]
+			
+			        VAR UCSP =
+			            [MatriculasUCSP]
+			
+			        VAR Participacion =
+			            DIVIDE(
+			                UCSP,
+			                Mercado
+			            )
+			
+			        VAR TextoUCSP =
+			            IF(
+			                ISBLANK(UCSP) || UCSP = 0,
+			                "NO DISP.",
+			                FORMAT(Participacion, "0.0%")
+			            )
+			
+			        VAR ColorUCSP =
+			            IF(
+			                ISBLANK(UCSP) || UCSP = 0,
+			                "#8f9095",
+			                "#2fd9f4"
+			            )
+			
+			        RETURN
+			        "
+			        <div style='
+			            display:grid;
+			            grid-template-columns:minmax(0,1fr) 115px 85px;
+			            align-items:center;
+			            column-gap:14px;
+			            min-height:39px;
+			            border-bottom:1px solid #30353d;
+			        '>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:12px;
+			                line-height:16px;
+			                font-weight:500;
+			                white-space:nowrap;
+			                overflow:hidden;
+			                text-overflow:ellipsis;
+			            '>
+			                " & NombrePrograma & "
+			            </div>
+			
+			            <div style='
+			                color:#ffffff;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:13px;
+			                line-height:16px;
+			                font-weight:700;
+			                text-align:right;
+			            '>
+			                " & FORMAT(Mercado, "#,##0") & "
+			            </div>
+			
+			            <div style='
+			                color:" & ColorUCSP & ";
+			                font-family:JetBrains Mono,monospace;
+			                font-size:12px;
+			                line-height:15px;
+			                font-weight:700;
+			                text-align:right;
+			            '>
+			                " & TextoUCSP & "
+			            </div>
+			
+			        </div>
+			        ",
+			        "",
+			        [MatriculasMercado],
+			        DESC
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:15px 17px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			'>
+			
+			    <!-- HEADER -->
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			        margin-bottom:9px;
+			    '>
+			
+			        <div>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:13px;
+			                line-height:17px;
+			                font-weight:700;
+			                letter-spacing:0.06em;
+			                text-transform:uppercase;
+			            '>
+			                DESGLOSE POR PROGRAMA
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:9px;
+			                line-height:12px;
+			                margin-top:3px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                MERCADO SELECCIONADO · UCSP
+			            </div>
+			
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:9px;
+			            line-height:12px;
+			            font-weight:600;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            TOP 8
+			        </div>
+			
+			    </div>
+			
+			
+			    <!-- COLUMNAS -->
+			
+			    <div style='
+			        display:grid;
+			        grid-template-columns:minmax(0,1fr) 115px 85px;
+			        column-gap:14px;
+			        padding:6px 0;
+			        border-top:1px solid #45474b;
+			        border-bottom:1px solid #45474b;
+			    '>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:9px;
+			            line-height:11px;
+			            font-weight:600;
+			            letter-spacing:0.07em;
+			            text-transform:uppercase;
+			        '>
+			            PROGRAMA
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:9px;
+			            line-height:11px;
+			            font-weight:600;
+			            text-align:right;
+			            letter-spacing:0.07em;
+			            text-transform:uppercase;
+			        '>
+			            MERCADO
+			        </div>
+			
+			        <div style='
+			            color:#2fd9f4;
+			            font-size:9px;
+			            line-height:11px;
+			            font-weight:600;
+			            text-align:right;
+			            letter-spacing:0.07em;
+			            text-transform:uppercase;
+			        '>
+			            UCSP
+			        </div>
+			
+			    </div>
+			
+			
+			    <!-- FILAS -->
+			
+			    <div style='
+			        height:calc(100% - 70px);
+			        overflow:hidden;
+			    '>
+			
+			        " & Filas & "
+			
+			    </div>
+			
+			</div>
+			"
+		lineageTag: 6c1a83ef-259e-4645-8b49-eae2b7c15f8d
+
+	measure HTML_Top5_Programas_Matriculas =
+			
+			VAR Programas =
+			    ADDCOLUMNS(
+			        VALUES('dim_programa'[NOMBRE_PROGRAMA]),
+			        "Volumen",
+			            CALCULATE(
+			                [Total Matriculados]
+			            )
+			    )
+			
+			VAR Top5 =
+			    TOPN(
+			        5,
+			        FILTER(
+			            Programas,
+			            NOT ISBLANK([Volumen])
+			                && [Volumen] > 0
+			        ),
+			        [Volumen],
+			        DESC,
+			        'dim_programa'[NOMBRE_PROGRAMA],
+			        ASC
+			    )
+			
+			VAR Filas =
+			    CONCATENATEX(
+			        Top5,
+			
+			        VAR Nombre =
+			            'dim_programa'[NOMBRE_PROGRAMA]
+			
+			        VAR Valor =
+			            [Volumen]
+			
+			        RETURN
+			        "
+			        <div style='
+			            display:grid;
+			            grid-template-columns:34px minmax(0,1fr) 100px;
+			            align-items:center;
+			            gap:10px;
+			            min-height:42px;
+			            border-bottom:1px solid #30353d;
+			        '>
+			
+			            <div style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:13px;
+			                font-weight:700;
+			            '>
+			                " &
+			                FORMAT(
+			                    RANKX(
+			                        Top5,
+			                        [Volumen],
+			                        ,
+			                        DESC,
+			                        Dense
+			                    ),
+			                    "00"
+			                )
+			                & "
+			            </div>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-family:Inter,Arial,sans-serif;
+			                font-size:12px;
+			                line-height:15px;
+			                font-weight:500;
+			                white-space:nowrap;
+			                overflow:hidden;
+			                text-overflow:ellipsis;
+			            '>
+			                " & Nombre & "
+			            </div>
+			
+			            <div style='
+			                color:#ffffff;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:15px;
+			                font-weight:700;
+			                text-align:right;
+			            '>
+			                " & FORMAT(Valor, "#,##0") & "
+			            </div>
+			
+			        </div>
+			        ",
+			        "",
+			        [Volumen],
+			        DESC
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:16px 18px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			'>
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			        margin-bottom:10px;
+			    '>
+			
+			        <div>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:15px;
+			                line-height:19px;
+			                font-weight:700;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                TOP 5 PROGRAMAS
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:9px;
+			                line-height:12px;
+			                margin-top:3px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                MAYOR VOLUMEN · MATRÍCULAS
+			            </div>
+			
+			        </div>
+			
+			        <div style='
+			            color:#2fd9f4;
+			            font-size:10px;
+			            font-weight:600;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            UCSP / MERCADO
+			        </div>
+			
+			    </div>
+			
+			    <div style='
+			        display:grid;
+			        grid-template-columns:34px minmax(0,1fr) 100px;
+			        gap:10px;
+			        padding:6px 0;
+			        border-top:1px solid #45474b;
+			        border-bottom:1px solid #45474b;
+			        color:#8f9095;
+			        font-size:8px;
+			        letter-spacing:0.06em;
+			        text-transform:uppercase;
+			    '>
+			
+			        <div>#</div>
+			
+			        <div>Programa</div>
+			
+			        <div style='text-align:right;'>
+			            Matrículas
+			        </div>
+			
+			    </div>
+			
+			    <div style='height:calc(100% - 76px);overflow:hidden;'>
+			        " & Filas & "
+			    </div>
+			
+			</div>
+			"
+		lineageTag: 69a90bc3-47d3-4e07-bd78-088bdcf9a2bf
+
+	measure HTML_Bottom5_Programas_Matriculas =
+			
+			VAR Programas =
+			    ADDCOLUMNS(
+			        VALUES('dim_programa'[NOMBRE_PROGRAMA]),
+			        "Volumen",
+			            CALCULATE(
+			                [Total Matriculados]
+			            )
+			    )
+			
+			VAR ProgramasActivos =
+			    FILTER(
+			        Programas,
+			        NOT ISBLANK([Volumen])
+			            && [Volumen] > 0
+			    )
+			
+			VAR Bottom5 =
+			    TOPN(
+			        5,
+			        ProgramasActivos,
+			        [Volumen],
+			        ASC,
+			        'dim_programa'[NOMBRE_PROGRAMA],
+			        ASC
+			    )
+			
+			VAR Filas =
+			    CONCATENATEX(
+			        Bottom5,
+			
+			        VAR Nombre =
+			            'dim_programa'[NOMBRE_PROGRAMA]
+			
+			        VAR Valor =
+			            [Volumen]
+			
+			        RETURN
+			        "
+			        <div style='
+			            display:grid;
+			            grid-template-columns:34px minmax(0,1fr) 100px;
+			            align-items:center;
+			            gap:10px;
+			            min-height:42px;
+			            border-bottom:1px solid #30353d;
+			        '>
+			
+			            <div style='
+			                color:#f59e0b;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:13px;
+			                font-weight:700;
+			            '>
+			                " &
+			                FORMAT(
+			                    RANKX(
+			                        Bottom5,
+			                        [Volumen],
+			                        ,
+			                        ASC,
+			                        Dense
+			                    ),
+			                    "00"
+			                )
+			                & "
+			            </div>
+			
+			            <div style='
+			                color:#c6c6cb;
+			                font-family:Inter,Arial,sans-serif;
+			                font-size:12px;
+			                line-height:15px;
+			                font-weight:500;
+			                white-space:nowrap;
+			                overflow:hidden;
+			                text-overflow:ellipsis;
+			            '>
+			                " & Nombre & "
+			            </div>
+			
+			            <div style='
+			                color:#ffffff;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:15px;
+			                font-weight:700;
+			                text-align:right;
+			            '>
+			                " & FORMAT(Valor, "#,##0") & "
+			            </div>
+			
+			        </div>
+			        ",
+			        "",
+			        [Volumen],
+			        ASC
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:16px 18px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			'>
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			        margin-bottom:10px;
+			    '>
+			
+			        <div>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:15px;
+			                line-height:19px;
+			                font-weight:700;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                BOTTOM 5 PROGRAMAS
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:9px;
+			                line-height:12px;
+			                margin-top:3px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                MENOR VOLUMEN ACTIVO · MATRÍCULAS
+			            </div>
+			
+			        </div>
+			
+			        <div style='
+			            color:#f59e0b;
+			            font-size:10px;
+			            font-weight:600;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            SOLO ACTIVOS
+			        </div>
+			
+			    </div>
+			
+			    <div style='
+			        display:grid;
+			        grid-template-columns:34px minmax(0,1fr) 100px;
+			        gap:10px;
+			        padding:6px 0;
+			        border-top:1px solid #45474b;
+			        border-bottom:1px solid #45474b;
+			        color:#8f9095;
+			        font-size:8px;
+			        letter-spacing:0.06em;
+			        text-transform:uppercase;
+			    '>
+			
+			        <div>#</div>
+			
+			        <div>Programa</div>
+			
+			        <div style='text-align:right;'>
+			            Matrículas
+			        </div>
+			
+			    </div>
+			
+			    <div style='height:calc(100% - 76px);overflow:hidden;'>
+			        " & Filas & "
+			    </div>
+			
+			</div>
+			"
+		lineageTag: 2bdfee0a-37dd-4334-8786-4bb69de50753
+
+	measure HTML_Evolucion_Demanda_Programas =
+			
+			VAR ProgramasBase =
+			    ADDCOLUMNS(
+			        VALUES('dim_programa'[NOMBRE_PROGRAMA]),
+			        "Valor2025",
+			            CALCULATE(
+			                [Total Matriculados],
+			                REMOVEFILTERS('dim_periodo'),
+			                'dim_periodo'[ANIO] = 2025
+			            )
+			    )
+			
+			VAR ProgramasActivos =
+			    FILTER(
+			        ProgramasBase,
+			        NOT ISBLANK([Valor2025])
+			            && [Valor2025] > 0
+			    )
+			
+			VAR Top5 =
+			    TOPN(
+			        5,
+			        ProgramasActivos,
+			        [Valor2025],
+			        DESC,
+			        'dim_programa'[NOMBRE_PROGRAMA],
+			        ASC
+			    )
+			
+			VAR Total2025 =
+			    CALCULATE(
+			        [Total Matriculados],
+			        REMOVEFILTERS('dim_periodo'),
+			        'dim_periodo'[ANIO] = 2025
+			    )
+			
+			VAR Top5Total =
+			    SUMX(
+			        Top5,
+			        [Valor2025]
+			    )
+			
+			VAR ConcentracionTop5 =
+			    DIVIDE(
+			        Top5Total,
+			        Total2025
+			    )
+			
+			VAR Filas =
+			    CONCATENATEX(
+			        Top5,
+			
+			        VAR Programa =
+			            'dim_programa'[NOMBRE_PROGRAMA]
+			
+			        VAR V2020 =
+			            CALCULATE(
+			                [Total Matriculados],
+			                REMOVEFILTERS('dim_periodo'),
+			                'dim_periodo'[ANIO] = 2020
+			            )
+			
+			        VAR V2021 =
+			            CALCULATE(
+			                [Total Matriculados],
+			                REMOVEFILTERS('dim_periodo'),
+			                'dim_periodo'[ANIO] = 2021
+			            )
+			
+			        VAR V2022 =
+			            CALCULATE(
+			                [Total Matriculados],
+			                REMOVEFILTERS('dim_periodo'),
+			                'dim_periodo'[ANIO] = 2022
+			            )
+			
+			        VAR V2023 =
+			            CALCULATE(
+			                [Total Matriculados],
+			                REMOVEFILTERS('dim_periodo'),
+			                'dim_periodo'[ANIO] = 2023
+			            )
+			
+			        VAR V2024 =
+			            CALCULATE(
+			                [Total Matriculados],
+			                REMOVEFILTERS('dim_periodo'),
+			                'dim_periodo'[ANIO] = 2024
+			            )
+			
+			        VAR V2025 =
+			            CALCULATE(
+			                [Total Matriculados],
+			                REMOVEFILTERS('dim_periodo'),
+			                'dim_periodo'[ANIO] = 2025
+			            )
+			
+			        VAR MaxFila =
+			            MAX(
+			                MAX(V2020, V2021),
+			                MAX(
+			                    MAX(V2022, V2023),
+			                    MAX(V2024, V2025)
+			                )
+			            )
+			
+			        VAR Nivel2020 =
+			            IF(
+			                ISBLANK(V2020) || MaxFila = 0,
+			                0,
+			                DIVIDE(V2020, MaxFila)
+			            )
+			
+			        VAR Nivel2021 =
+			            IF(
+			                ISBLANK(V2021) || MaxFila = 0,
+			                0,
+			                DIVIDE(V2021, MaxFila)
+			            )
+			
+			        VAR Nivel2022 =
+			            IF(
+			                ISBLANK(V2022) || MaxFila = 0,
+			                0,
+			                DIVIDE(V2022, MaxFila)
+			            )
+			
+			        VAR Nivel2023 =
+			            IF(
+			                ISBLANK(V2023) || MaxFila = 0,
+			                0,
+			                DIVIDE(V2023, MaxFila)
+			            )
+			
+			        VAR Nivel2024 =
+			            IF(
+			                ISBLANK(V2024) || MaxFila = 0,
+			                0,
+			                DIVIDE(V2024, MaxFila)
+			            )
+			
+			        VAR Nivel2025 =
+			            IF(
+			                ISBLANK(V2025) || MaxFila = 0,
+			                0,
+			                DIVIDE(V2025, MaxFila)
+			            )
+			
+			        VAR S1 =
+			            SWITCH(
+			                TRUE(),
+			                Nivel2020 = 0, "·",
+			                Nivel2020 < 0.20, "▁",
+			                Nivel2020 < 0.35, "▂",
+			                Nivel2020 < 0.50, "▃",
+			                Nivel2020 < 0.65, "▄",
+			                Nivel2020 < 0.80, "▅",
+			                Nivel2020 < 0.92, "▆",
+			                Nivel2020 < 1, "▇",
+			                "█"
+			            )
+			
+			        VAR S2 =
+			            SWITCH(
+			                TRUE(),
+			                Nivel2021 = 0, "·",
+			                Nivel2021 < 0.20, "▁",
+			                Nivel2021 < 0.35, "▂",
+			                Nivel2021 < 0.50, "▃",
+			                Nivel2021 < 0.65, "▄",
+			                Nivel2021 < 0.80, "▅",
+			                Nivel2021 < 0.92, "▆",
+			                Nivel2021 < 1, "▇",
+			                "█"
+			            )
+			
+			        VAR S3 =
+			            SWITCH(
+			                TRUE(),
+			                Nivel2022 = 0, "·",
+			                Nivel2022 < 0.20, "▁",
+			                Nivel2022 < 0.35, "▂",
+			                Nivel2022 < 0.50, "▃",
+			                Nivel2022 < 0.65, "▄",
+			                Nivel2022 < 0.80, "▅",
+			                Nivel2022 < 0.92, "▆",
+			                Nivel2022 < 1, "▇",
+			                "█"
+			            )
+			
+			        VAR S4 =
+			            SWITCH(
+			                TRUE(),
+			                Nivel2023 = 0, "·",
+			                Nivel2023 < 0.20, "▁",
+			                Nivel2023 < 0.35, "▂",
+			                Nivel2023 < 0.50, "▃",
+			                Nivel2023 < 0.65, "▄",
+			                Nivel2023 < 0.80, "▅",
+			                Nivel2023 < 0.92, "▆",
+			                Nivel2023 < 1, "▇",
+			                "█"
+			            )
+			
+			        VAR S5 =
+			            SWITCH(
+			                TRUE(),
+			                Nivel2024 = 0, "·",
+			                Nivel2024 < 0.20, "▁",
+			                Nivel2024 < 0.35, "▂",
+			                Nivel2024 < 0.50, "▃",
+			                Nivel2024 < 0.65, "▄",
+			                Nivel2024 < 0.80, "▅",
+			                Nivel2024 < 0.92, "▆",
+			                Nivel2024 < 1, "▇",
+			                "█"
+			            )
+			
+			        VAR S6 =
+			            SWITCH(
+			                TRUE(),
+			                Nivel2025 = 0, "·",
+			                Nivel2025 < 0.20, "▁",
+			                Nivel2025 < 0.35, "▂",
+			                Nivel2025 < 0.50, "▃",
+			                Nivel2025 < 0.65, "▄",
+			                Nivel2025 < 0.80, "▅",
+			                Nivel2025 < 0.92, "▆",
+			                Nivel2025 < 1, "▇",
+			                "█"
+			            )
+			
+			        VAR Sparkline =
+			            S1 & S2 & S3 & S4 & S5 & S6
+			
+			        VAR Cambio =
+			            DIVIDE(
+			                V2025 - V2020,
+			                V2020
+			            )
+			
+			        VAR Icono =
+			            SWITCH(
+			                TRUE(),
+			                ISBLANK(Cambio), "—",
+			                Cambio > 0.05, "↑",
+			                Cambio < -0.05, "↓",
+			                "→"
+			            )
+			
+			        VAR ColorTendencia =
+			            SWITCH(
+			                TRUE(),
+			                ISBLANK(Cambio), "#8f9095",
+			                Cambio > 0.05, "#2fd9f4",
+			                Cambio < -0.05, "#ffb4ab",
+			                "#8f9095"
+			            )
+			
+			        RETURN
+			        "
+			        <div style='
+			            display:grid;
+			            grid-template-columns:190px minmax(100px,1fr) 85px 38px;
+			            align-items:center;
+			            gap:12px;
+			            min-height:36px;
+			            border-bottom:1px solid #30353d;
+			        '>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:11px;
+			                line-height:14px;
+			                font-weight:500;
+			                white-space:nowrap;
+			                overflow:hidden;
+			                text-overflow:ellipsis;
+			            '>
+			                " & Programa & "
+			            </div>
+			
+			            <div style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:19px;
+			                line-height:20px;
+			                letter-spacing:0;
+			                white-space:nowrap;
+			                overflow:hidden;
+			            '>
+			                " & Sparkline & "
+			            </div>
+			
+			            <div style='
+			                color:#ffffff;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:12px;
+			                font-weight:700;
+			                text-align:right;
+			            '>
+			                " & FORMAT(V2025, "#,##0") & "
+			            </div>
+			
+			            <div style='
+			                color:" & ColorTendencia & ";
+			                font-family:JetBrains Mono,monospace;
+			                font-size:15px;
+			                font-weight:700;
+			                text-align:center;
+			            '>
+			                " & Icono & "
+			            </div>
+			
+			        </div>
+			        ",
+			        "",
+			        [Valor2025],
+			        DESC
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:15px 17px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			'>
+			
+			    <!-- HEADER -->
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			        margin-bottom:8px;
+			    '>
+			
+			        <div>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:14px;
+			                line-height:18px;
+			                font-weight:700;
+			                letter-spacing:0.06em;
+			                text-transform:uppercase;
+			            '>
+			                EVOLUCIÓN DE LA DEMANDA
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:9px;
+			                line-height:12px;
+			                margin-top:3px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                TOP 5 PROGRAMAS · MATRÍCULAS · 2020–2025
+			            </div>
+			
+			        </div>
+			
+			        <div style='
+			            text-align:right;
+			        '>
+			
+			            <div style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:20px;
+			                line-height:22px;
+			                font-weight:700;
+			            '>
+			                " & FORMAT(ConcentracionTop5, "0.0%") & "
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:8px;
+			                line-height:10px;
+			                margin-top:2px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                CONCENTRACIÓN TOP 5
+			            </div>
+			
+			        </div>
+			
+			    </div>
+			
+			
+			    <!-- HEADER TABLA -->
+			
+			    <div style='
+			        display:grid;
+			        grid-template-columns:190px minmax(100px,1fr) 85px 38px;
+			        align-items:center;
+			        gap:12px;
+			        padding:6px 0;
+			        border-top:1px solid #45474b;
+			        border-bottom:1px solid #45474b;
+			    '>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            font-weight:600;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            PROGRAMA
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            font-weight:600;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            EVOLUCIÓN 2020 → 2025
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            font-weight:600;
+			            text-align:right;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            2025
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            font-weight:600;
+			            text-align:center;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            Δ
+			        </div>
+			
+			    </div>
+			
+			
+			    <!-- FILAS -->
+			
+			    <div style='
+			        height:calc(100% - 72px);
+			        overflow:hidden;
+			    '>
+			        " & Filas & "
+			    </div>
+			
+			</div>
+			"
+		lineageTag: a3d95816-5be6-483c-b1a7-7394c7ab2ac5
+
+	measure HTML_KPI_Brecha_Lider =
+			
+			VAR Lider =
+			    [Universidad Líder Matrículas]
+			
+			VAR MatriculasLider =
+			    [Matrículas Líder]
+			
+			VAR MatriculasUCSP =
+			    [Total Matrículas UCSP]
+			
+			VAR Brecha =
+			    [Brecha Matrículas vs Líder]
+			
+			VAR BrechaAbsoluta =
+			    ABS(Brecha)
+			
+			VAR BrechaPorcentual =
+			    DIVIDE(
+			        MatriculasUCSP - MatriculasLider,
+			        MatriculasLider
+			    )
+			
+			VAR LiderFormateado =
+			    FORMAT(
+			        MatriculasLider,
+			        "#,##0"
+			    )
+			
+			VAR UCSPFormateado =
+			    FORMAT(
+			        MatriculasUCSP,
+			        "#,##0"
+			    )
+			
+			VAR BrechaFormateada =
+			    FORMAT(
+			        BrechaAbsoluta,
+			        "#,##0"
+			    )
+			
+			VAR BrechaPctFormateada =
+			    FORMAT(
+			        ABS(BrechaPorcentual),
+			        "0.0%"
+			    )
+			
+			VAR Direccion =
+			    SWITCH(
+			        TRUE(),
+			        Brecha < 0, "▼",
+			        Brecha > 0, "▲",
+			        "＝"
+			    )
+			
+			VAR ColorBrecha =
+			    SWITCH(
+			        TRUE(),
+			        Brecha < 0, "#ffb4ab",
+			        Brecha > 0, "#2fd9f4",
+			        "#8f9095"
+			    )
+			
+			VAR TextoBrecha =
+			    SWITCH(
+			        TRUE(),
+			        Brecha < 0, "POR DEBAJO DEL LÍDER",
+			        Brecha > 0, "POR ENCIMA DEL LÍDER",
+			        "MISMO VOLUMEN DEL LÍDER"
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:15px 17px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			    display:flex;
+			    flex-direction:column;
+			    justify-content:space-between;
+			'>
+			
+			    <!-- HEADER -->
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			    '>
+			
+			        <div>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:13px;
+			                line-height:17px;
+			                font-weight:700;
+			                letter-spacing:0.06em;
+			                text-transform:uppercase;
+			            '>
+			                BRECHA VS. LÍDER
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:8px;
+			                line-height:11px;
+			                margin-top:3px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                MATRÍCULAS · CONTEXTO ACTUAL
+			            </div>
+			
+			        </div>
+			
+			        <span style='
+			            color:#2fd9f4;
+			            font-size:14px;
+			            line-height:14px;
+			        '>
+			            ●
+			        </span>
+			
+			    </div>
+			
+			
+			    <!-- BRECHA PRINCIPAL -->
+			
+			    <div style='
+			        display:flex;
+			        align-items:baseline;
+			        gap:9px;
+			        margin-top:4px;
+			    '>
+			
+			        <span style='
+			            color:" & ColorBrecha & ";
+			            font-family:JetBrains Mono,monospace;
+			            font-size:15px;
+			            font-weight:700;
+			        '>
+			            " & Direccion & "
+			        </span>
+			
+			        <span style='
+			            color:#ffffff;
+			            font-family:JetBrains Mono,monospace;
+			            font-size:27px;
+			            line-height:30px;
+			            font-weight:700;
+			            letter-spacing:-0.02em;
+			        '>
+			            " & BrechaFormateada & "
+			        </span>
+			
+			    </div>
+			
+			    <div style='
+			        color:" & ColorBrecha & ";
+			        font-size:8px;
+			        line-height:10px;
+			        font-weight:600;
+			        letter-spacing:0.06em;
+			        text-transform:uppercase;
+			        margin-top:1px;
+			    '>
+			        " & TextoBrecha & "
+			    </div>
+			
+			
+			    <!-- COMPARACIÓN -->
+			
+			    <div style='
+			        border-top:1px solid #30353d;
+			        margin-top:7px;
+			        padding-top:7px;
+			    '>
+			
+			        <div style='
+			            display:flex;
+			            justify-content:space-between;
+			            align-items:center;
+			            margin-bottom:5px;
+			        '>
+			
+			            <span style='
+			                color:#8f9095;
+			                font-size:8px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                LÍDER
+			            </span>
+			
+			            <span style='
+			                color:#dee2ec;
+			                font-size:10px;
+			                font-weight:600;
+			                max-width:210px;
+			                white-space:nowrap;
+			                overflow:hidden;
+			                text-overflow:ellipsis;
+			            '>
+			                " & Lider & "
+			            </span>
+			
+			        </div>
+			
+			
+			        <div style='
+			            display:flex;
+			            justify-content:space-between;
+			            align-items:center;
+			            margin-bottom:5px;
+			        '>
+			
+			            <span style='
+			                color:#8f9095;
+			                font-size:8px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                UCSP
+			            </span>
+			
+			            <span style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:12px;
+			                font-weight:700;
+			            '>
+			                " & UCSPFormateado & "
+			            </span>
+			
+			        </div>
+			
+			
+			        <div style='
+			            display:flex;
+			            justify-content:space-between;
+			            align-items:center;
+			        '>
+			
+			            <span style='
+			                color:#8f9095;
+			                font-size:8px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                DIFERENCIA
+			            </span>
+			
+			            <span style='
+			                color:#c6c6cb;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:10px;
+			                font-weight:600;
+			            '>
+			                " & BrechaPctFormateada & "
+			            </span>
+			
+			        </div>
+			
+			    </div>
+			
+			</div>
+			"
+		lineageTag: d1b343dc-22f9-4f0b-b3c7-9f2135ba3baa
+
+	measure HTML_Executive_Insight =
+			
+			VAR ProgramasBase =
+			    ADDCOLUMNS(
+			        VALUES('dim_programa'[NOMBRE_PROGRAMA]),
+			        "Volumen",
+			            CALCULATE(
+			                [Total Matriculados]
+			            )
+			    )
+			
+			VAR ProgramasActivos =
+			    FILTER(
+			        ProgramasBase,
+			        NOT ISBLANK([Volumen])
+			            && [Volumen] > 0
+			    )
+			
+			VAR Top5 =
+			    TOPN(
+			        5,
+			        ProgramasActivos,
+			        [Volumen],
+			        DESC,
+			        'dim_programa'[NOMBRE_PROGRAMA],
+			        ASC
+			    )
+			
+			VAR Top3 =
+			    TOPN(
+			        3,
+			        ProgramasActivos,
+			        [Volumen],
+			        DESC,
+			        'dim_programa'[NOMBRE_PROGRAMA],
+			        ASC
+			    )
+			
+			VAR Programa1 =
+			    MAXX(
+			        TOP3,
+			        'dim_programa'[NOMBRE_PROGRAMA]
+			    )
+			
+			VAR Programa2 =
+			    MAXX(
+			        EXCEPT(
+			            TOP3,
+			            TOPN(
+			                1,
+			                TOP3,
+			                [Volumen],
+			                DESC,
+			                'dim_programa'[NOMBRE_PROGRAMA],
+			                ASC
+			            )
+			        ),
+			        'dim_programa'[NOMBRE_PROGRAMA]
+			    )
+			
+			VAR Programa3 =
+			    MAXX(
+			        EXCEPT(
+			            TOP3,
+			            TOPN(
+			                2,
+			                TOP3,
+			                [Volumen],
+			                DESC,
+			                'dim_programa'[NOMBRE_PROGRAMA],
+			                ASC
+			            )
+			        ),
+			        'dim_programa'[NOMBRE_PROGRAMA]
+			    )
+			
+			VAR TotalDemanda =
+			    [Total Matriculados]
+			
+			VAR TotalTop5 =
+			    SUMX(
+			        Top5,
+			        [Volumen]
+			    )
+			
+			VAR Concentracion =
+			    DIVIDE(
+			        TotalTop5,
+			        TotalDemanda
+			    )
+			
+			VAR ConcentracionFormateada =
+			    FORMAT(
+			        Concentracion,
+			        "0.0%"
+			    )
+			
+			VAR PosicionUCSP =
+			    [Posición UCSP Matrículas]
+			
+			VAR Lider =
+			    [Universidad Líder Matrículas]
+			
+			VAR InsightPrincipal =
+			    SWITCH(
+			        TRUE(),
+			
+			        ISBLANK(TotalDemanda)
+			            || TotalDemanda = 0,
+			        "No existe demanda registrada para el contexto seleccionado.",
+			
+			        "La demanda se concentra principalmente en "
+			            & Programa1
+			            & ", "
+			            & Programa2
+			            & " e "
+			            & Programa3
+			            & "."
+			    )
+			
+			VAR InsightSecundario =
+			    IF(
+			        ISBLANK(Concentracion),
+			        "No es posible calcular la concentración Top 5.",
+			        "Los 5 programas principales concentran el "
+			            & ConcentracionFormateada
+			            & " de la demanda del contexto seleccionado."
+			    )
+			
+			VAR InsightCompetitivo =
+			    IF(
+			        ISBLANK(PosicionUCSP),
+			        "",
+			        "La UCSP ocupa la posición #"
+			            & FORMAT(PosicionUCSP, "0")
+			            & " frente al mercado seleccionado."
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:15px 17px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			    display:flex;
+			    flex-direction:column;
+			    justify-content:space-between;
+			'>
+			
+			    <!-- HEADER -->
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			    '>
+			
+			        <div>
+			
+			            <div style='
+			                color:#2fd9f4;
+			                font-size:10px;
+			                line-height:13px;
+			                font-family:JetBrains Mono,monospace;
+			                font-weight:600;
+			                letter-spacing:0.08em;
+			                text-transform:uppercase;
+			            '>
+			                EXECUTIVE INSIGHT
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:8px;
+			                margin-top:2px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                LECTURA AUTOMÁTICA · CONTEXTO ACTUAL
+			            </div>
+			
+			        </div>
+			
+			        <span style='
+			            color:#2fd9f4;
+			            font-size:13px;
+			        '>
+			            ●
+			        </span>
+			
+			    </div>
+			
+			
+			    <!-- INSIGHT PRINCIPAL -->
+			
+			    <div style='
+			        margin-top:10px;
+			    '>
+			
+			        <div style='
+			            color:#dee2ec;
+			            font-size:14px;
+			            line-height:20px;
+			            font-weight:600;
+			        '>
+			            " & InsightPrincipal & "
+			        </div>
+			
+			    </div>
+			
+			
+			    <!-- INSIGHT SECUNDARIO -->
+			
+			    <div style='
+			        border-left:2px solid #2fd9f4;
+			        padding-left:10px;
+			        margin-top:9px;
+			    '>
+			
+			        <div style='
+			            color:#c6c6cb;
+			            font-size:10px;
+			            line-height:15px;
+			        '>
+			            " & InsightSecundario & "
+			        </div>
+			
+			    </div>
+			
+			
+			    <!-- COMPETITIVE -->
+			
+			    <div style='
+			        border-top:1px solid #30353d;
+			        padding-top:8px;
+			        margin-top:8px;
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:center;
+			        gap:12px;
+			    '>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            line-height:11px;
+			            letter-spacing:0.04em;
+			            text-transform:uppercase;
+			        '>
+			            " & InsightCompetitivo & "
+			        </div>
+			
+			        <div style='
+			            text-align:right;
+			            flex-shrink:0;
+			        '>
+			
+			            <div style='
+			                color:#2fd9f4;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:18px;
+			                line-height:20px;
+			                font-weight:700;
+			            '>
+			                " & ConcentracionFormateada & "
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:7px;
+			                line-height:9px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                TOP 5
+			            </div>
+			
+			        </div>
+			
+			    </div>
+			
+			</div>
+			"
+		lineageTag: 67b6ae4c-9973-4527-8d12-ab0bd1f51637
+
+	measure HTML_Oportunidades_Mercado =
+			
+			VAR ProgramasBase =
+			    ADDCOLUMNS(
+			        VALUES('dim_programa'[NOMBRE_PROGRAMA]),
+			
+			        "Mercado",
+			            CALCULATE(
+			                [Total Matriculados],
+			                REMOVEFILTERS('dim_universidad')
+			            ),
+			
+			        "UCSP",
+			            CALCULATE(
+			                [Total Matrículas],
+			                REMOVEFILTERS('dim_universidad'),
+			                'dim_universidad'[CODIGO_INEI] = "260000062"
+			            )
+			    )
+			
+			VAR ProgramasActivos =
+			    FILTER(
+			        ProgramasBase,
+			        NOT ISBLANK([Mercado])
+			            && [Mercado] > 0
+			    )
+			
+			VAR ProgramasOportunidad =
+			    FILTER(
+			        ProgramasActivos,
+			        ISBLANK([UCSP])
+			            || [UCSP] = 0
+			            || DIVIDE([UCSP], [Mercado]) < 0.15
+			    )
+			
+			VAR Top5Oportunidades =
+			    TOPN(
+			        5,
+			        ProgramasOportunidad,
+			        [Mercado],
+			        DESC,
+			        'dim_programa'[NOMBRE_PROGRAMA],
+			        ASC
+			    )
+			
+			VAR Filas =
+			    CONCATENATEX(
+			        Top5Oportunidades,
+			
+			        VAR Programa =
+			            'dim_programa'[NOMBRE_PROGRAMA]
+			
+			        VAR ValorMercado =
+			            [Mercado]
+			
+			        VAR ValorUCSP =
+			            [UCSP]
+			
+			        VAR Participacion =
+			            DIVIDE(
+			                ValorUCSP,
+			                ValorMercado
+			            )
+			
+			        VAR Estado =
+			            SWITCH(
+			                TRUE(),
+			
+			                ISBLANK(ValorUCSP)
+			                    || ValorUCSP = 0,
+			                "SIN PRESENCIA",
+			
+			                Participacion < 0.15,
+			                "BAJA PRESENCIA",
+			
+			                "PRESENCIA"
+			            )
+			
+			        VAR ColorEstado =
+			            SWITCH(
+			                TRUE(),
+			
+			                Estado = "SIN PRESENCIA",
+			                "#f59e0b",
+			
+			                Estado = "BAJA PRESENCIA",
+			                "#2fd9f4",
+			
+			                "#8f9095"
+			            )
+			
+			        VAR TextoUCSP =
+			            IF(
+			                ISBLANK(ValorUCSP)
+			                    || ValorUCSP = 0,
+			                "—",
+			                FORMAT(
+			                    Participacion,
+			                    "0.0%"
+			                )
+			            )
+			
+			        RETURN
+			        "
+			        <div style='
+			            display:grid;
+			            grid-template-columns:minmax(0,1fr) 90px 70px 100px;
+			            align-items:center;
+			            gap:10px;
+			            min-height:40px;
+			            border-bottom:1px solid #30353d;
+			        '>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:11px;
+			                line-height:14px;
+			                font-weight:500;
+			                white-space:nowrap;
+			                overflow:hidden;
+			                text-overflow:ellipsis;
+			            '>
+			                " & Programa & "
+			            </div>
+			
+			            <div style='
+			                color:#ffffff;
+			                font-family:JetBrains Mono,monospace;
+			                font-size:12px;
+			                font-weight:700;
+			                text-align:right;
+			            '>
+			                " & FORMAT(
+			                    ValorMercado,
+			                    "#,##0"
+			                ) & "
+			            </div>
+			
+			            <div style='
+			                color:" & ColorEstado & ";
+			                font-family:JetBrains Mono,monospace;
+			                font-size:11px;
+			                font-weight:700;
+			                text-align:right;
+			            '>
+			                " & TextoUCSP & "
+			            </div>
+			
+			            <div style='
+			                color:" & ColorEstado & ";
+			                font-size:8px;
+			                line-height:10px;
+			                font-weight:600;
+			                text-align:right;
+			                letter-spacing:0.04em;
+			                text-transform:uppercase;
+			            '>
+			                " & Estado & "
+			            </div>
+			
+			        </div>
+			        ",
+			        "",
+			        [Mercado],
+			        DESC
+			    )
+			
+			VAR CantidadOportunidades =
+			    COUNTROWS(
+			        Top5Oportunidades
+			    )
+			
+			RETURN
+			"
+			<div style='
+			    width:100%;
+			    height:100%;
+			    box-sizing:border-box;
+			    background:#171c23;
+			    border:1px solid #30353d;
+			    border-radius:8px;
+			    padding:15px 17px;
+			    font-family:Inter,Arial,sans-serif;
+			    overflow:hidden;
+			'>
+			
+			    <!-- HEADER -->
+			
+			    <div style='
+			        display:flex;
+			        justify-content:space-between;
+			        align-items:flex-start;
+			        margin-bottom:9px;
+			    '>
+			
+			        <div>
+			
+			            <div style='
+			                color:#dee2ec;
+			                font-size:14px;
+			                line-height:18px;
+			                font-weight:700;
+			                letter-spacing:0.06em;
+			                text-transform:uppercase;
+			            '>
+			                OPORTUNIDADES DE MERCADO
+			            </div>
+			
+			            <div style='
+			                color:#8f9095;
+			                font-size:9px;
+			                line-height:12px;
+			                margin-top:3px;
+			                letter-spacing:0.05em;
+			                text-transform:uppercase;
+			            '>
+			                PROGRAMAS CON DEMANDA Y BAJA PRESENCIA UCSP
+			            </div>
+			
+			        </div>
+			
+			        <div style='
+			            color:#2fd9f4;
+			            font-size:9px;
+			            font-weight:600;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            TOP 5
+			        </div>
+			
+			    </div>
+			
+			
+			    <!-- COLUMN HEADERS -->
+			
+			    <div style='
+			        display:grid;
+			        grid-template-columns:minmax(0,1fr) 90px 70px 100px;
+			        gap:10px;
+			        padding:6px 0;
+			        border-top:1px solid #45474b;
+			        border-bottom:1px solid #45474b;
+			    '>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            font-weight:600;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            PROGRAMA
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            font-weight:600;
+			            text-align:right;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            MERCADO
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            font-weight:600;
+			            text-align:right;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            UCSP
+			        </div>
+			
+			        <div style='
+			            color:#8f9095;
+			            font-size:8px;
+			            font-weight:600;
+			            text-align:right;
+			            letter-spacing:0.06em;
+			            text-transform:uppercase;
+			        '>
+			            LECTURA
+			        </div>
+			
+			    </div>
+			
+			
+			    <!-- ROWS -->
+			
+			    <div style='
+			        height:calc(100% - 72px);
+			        overflow:hidden;
+			    '>
+			
+			        " & Filas & "
+			
+			    </div>
+			
+			
+			    <!-- FOOTER -->
+			
+			    <div style='
+			        border-top:1px solid #30353d;
+			        margin-top:5px;
+			        padding-top:6px;
+			        color:#797d85;
+			        font-size:8px;
+			        line-height:11px;
+			    '>
+			        Identifica programas con volumen relevante en el mercado seleccionado
+			        donde la presencia de la UCSP es inexistente o inferior al 15%.
+			    </div>
+			
+			</div>
+			"
+		lineageTag: 79f4387c-3b95-46e7-9181-87a897920ede
+
+	column Column
+		formatString: 0
+		lineageTag: f2b3f73a-7128-4d1e-8f73-0a0ed504c0cf
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition HTML1 = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = db65a93becd14414b75bee1f2f45e5ae
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

@@ -1,0 +1,40 @@
+table Dim_Zona
+	lineageTag: 13ed4982-409f-4ca9-aa8e-f052838e7b93
+
+	column DEPARTAMENTO
+		lineageTag: 3223e935-6a8c-4162-908a-40cbe152654e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dim_ubicacion[DEPARTAMENTO]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZONA
+		lineageTag: 30cc7b8f-48fd-4dc0-9450-106813c68dfe
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ZONA]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Zona = calculated
+		mode: import
+		source = ```
+				
+				    SUMMARIZE(
+				        'dim_ubicacion',
+				        'dim_ubicacion'[DEPARTAMENTO],
+				        "ZONA", SWITCH( TRUE(),
+				            'dim_ubicacion'[DEPARTAMENTO] IN
+				                { "AMAZONAS", "CAJAMARCA", "LA LIBERTAD", "LAMBAYEQUE", "LORETO",
+				                  "PIURA", "SAN MARTIN", "TUMBES" }, "Norte",
+				            'dim_ubicacion'[DEPARTAMENTO] IN
+				                { "ANCASH", "APURIMAC", "AYACUCHO", "CALLAO", "HUANCAVELICA",
+				                  "HUANUCO", "ICA", "JUNIN", "LIMA", "PASCO", "UCAYALI" }, "Centro",
+				            "Sur"  // AREQUIPA, CUSCO, MADRE DE DIOS, MOQUEGUA, PUNO, TACNA
+				        )
+				    )
+				```
+
+	annotation PBI_Id = 369dab67cf2340d58848dee3bf208ef5
+

@@ -1,0 +1,40 @@
+relationship FK_Ingresantes_Universidad
+	fromColumn: fact_ingresantes_dashboard.FK_Universidad
+	toColumn: dim_universidad.SK_Universidad
+
+relationship FK_Ingresantes_Programa
+	fromColumn: fact_ingresantes_dashboard.FK_Programa
+	toColumn: dim_programa.SK_Programa
+
+relationship FK_Ingresantes_Periodo
+	fromColumn: fact_ingresantes_dashboard.FK_Periodo
+	toColumn: dim_periodo.SK_Periodo
+
+relationship FK_Ingresantes_Ubicacion
+	fromColumn: fact_ingresantes_dashboard.FK_Ubicacion
+	toColumn: dim_ubicacion.SK_Ubicacion
+
+relationship FK_Matriculados_Universidad
+	fromColumn: fact_matriculados_dashboard.FK_Universidad
+	toColumn: dim_universidad.SK_Universidad
+
+relationship FK_Matriculados_Programa
+	fromColumn: fact_matriculados_dashboard.FK_Programa
+	toColumn: dim_programa.SK_Programa
+
+relationship FK_Matriculados_Periodo
+	fromColumn: fact_matriculados_dashboard.FK_Periodo
+	toColumn: dim_periodo.SK_Periodo
+
+relationship FK_Matriculados_Ubicacion
+	fromColumn: fact_matriculados_dashboard.FK_Ubicacion
+	toColumn: dim_ubicacion.SK_Ubicacion
+
+relationship FK_Matriculados_Local
+	fromColumn: fact_matriculados_dashboard.FK_Local
+	toColumn: dim_local.SK_Local
+
+relationship 5992c27b-4736-747c-c3cd-e993972762e1
+	fromColumn: dim_ubicacion.DEPARTAMENTO
+	toColumn: Dim_Zona.DEPARTAMENTO
+

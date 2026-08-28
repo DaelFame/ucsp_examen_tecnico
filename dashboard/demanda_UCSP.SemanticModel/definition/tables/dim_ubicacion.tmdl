@@ -5,7 +5,7 @@ table dim_ubicacion
 		dataType: int64
 		formatString: 0
 		lineageTag: 1a9d553c-2e5c-4b91-be41-eb909da10e95
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: SK_Ubicacion
 
 		annotation SummarizationSetBy = Automatic

@@ -5,9 +5,10 @@
 | Proyecto | demanda_UCSP |
 | Feature | F001 — Data Quality Audit |
 | Fase | FASE 1 |
-| Script | `audit_data_quality.py` (solo lectura) |
+| Script | `src/audits/audit_data_quality.py` (solo lectura) |
 | Fuente de datos | `data/Dashboard_parquet/` |
 | Ejecución | Última ejecución exitosa (2 correcciones previas registradas en §12) |
+| Re-ejecución | Post-reorganización desde `src/audits/audit_data_quality.py`: resultados idénticos a F001 |
 
 ## 1. Executive Summary
 

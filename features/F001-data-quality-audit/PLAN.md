@@ -4,8 +4,9 @@
 | ----- | ----- |
 | Feature | F001 |
 | Fase | FASE 1 |
-| Script | `audit_data_quality.py` |
+| Script | `src/audits/audit_data_quality.py` |
 | Modo | Solo lectura |
+| Ejecución | Desde la raíz del proyecto: `python src/audits/audit_data_quality.py` |
 
 ## Pruebas que ejecutará Python
 
@@ -71,3 +72,4 @@
 - No modificar ningún Parquet.
 - No modificar `dashboard/`, MCP ni Power BI.
 - Resultados reproducibles y claros.
+- La salida (evidencia) se escribe únicamente en `features/F001-data-quality-audit/audit_output.json`.

@@ -7,7 +7,7 @@
 | Nombre | Data Quality Audit |
 | Fase | FASE 1 |
 | Quality Gate | GATE 1 — Data Quality |
-| Estado | En ejecución |
+| Estado | Completada (GATE 1: PASS WITH WARNINGS) |
 
 ## 1. Objetivo
 
@@ -75,17 +75,20 @@ esos estados con evidencia objetiva, sin modificar ninguna fuente.
 
 ## 8. Salidas
 
-- `audit_data_quality.py` (script de solo lectura, reproducible).
-- Salida de auditoría (stdout/JSON).
-- `DATA_QUALITY_REPORT.md`.
+- Código de implementación: `src/audits/audit_data_quality.py` (script de solo lectura,
+  reproducible).
+- Evidencia: `audit_output.json` (en `features/F001-data-quality-audit/`).
+- Reporte: `features/F001-data-quality-audit/DATA_QUALITY_REPORT.md`.
 - `DATA_CONTRACT.md` actualizado (solo con evidencia objetiva).
 
 ## 9. Criterios de aceptación
 
-1. El script es de solo lectura y reproducible.
+1. El script (`src/audits/audit_data_quality.py`) es de solo lectura y reproducible
+   desde la raíz del proyecto.
 2. Se reporta inventario, schema, SK, FK, nulos, huérfanos, dominios, cobertura
    temporal y métricas fuente.
-3. Cada conclusión del reporte está respaldada por resultados de ejecución.
+3. Cada conclusión del reporte está respaldada por resultados de ejecución
+   (evidencia en `audit_output.json`).
 4. `DATA_CONTRACT.md` se actualiza únicamente donde la evidencia lo permite, sin
    conversiones automáticas de `[POR VALIDAR]`.
 

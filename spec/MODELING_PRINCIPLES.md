@@ -106,6 +106,21 @@ Toda decisión específica se definirá y justificará en la feature correspondi
 - Solo se adoptará si aporta valor demostrable a las preguntas obligatorias del
   enunciado, y siempre documentada en su Feature SPEC.
 
+### P15 — Respetar la granularidad real de cada fuente
+
+- Cada hecho conserva la granularidad temporal observada en la fuente (F001):
+  - `fact_ingresantes_dashboard` → granularidad temporal observable **anual**.
+  - `fact_matriculados_dashboard` → granularidad temporal observable **semestral**.
+- La diferencia anual/semestral **no se interpreta como error automático**.
+- La granularidad de cada hecho se respeta en toda implementación futura.
+
+### P16 — No fabricar datos
+
+- No se fabrican niveles que la fuente no provee (p. ej., **no se crean datos
+  semestrales de ingresantes** si la fuente solo tiene períodos anuales).
+- Un nivel agregado solo se calcula a partir de niveles existentes (p. ej., "Año
+  completo" de matriculados evaluable a partir de sus períodos semestrales).
+
 ## 3. Patrón conceptual: FIJO vs DINÁMICO
 
 ### Definición

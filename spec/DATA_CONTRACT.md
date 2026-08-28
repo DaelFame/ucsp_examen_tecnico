@@ -46,13 +46,20 @@ Las particiones TMDL apuntan a estos archivos (modo import).
 
 ### Evidencia (F001 — Data Quality Audit)
 
-- Fuente: ejecución de `features/F001-data-quality-audit/audit_data_quality.py`.
+- Fuente: ejecución de `src/audits/audit_data_quality.py`.
 - Detalle completo: `features/F001-data-quality-audit/DATA_QUALITY_REPORT.md`.
 - Tipos observados en Parquet: SK/FK = `uint32`; `SEMESTRE` = `float64` (6 nulos);
   el resto coincide con TMDL. El TMDL declara SK/FK y SEMESTRE como `int64`.
   Alineación de tipos: **DECISIÓN PENDIENTE** (no resuelta en F001).
 
 ## 4. DIMENSIONES
+
+> **Nota de tipos (A4):** las tablas de esta sección y de la sección 5 muestran el tipo
+> **declarado/objetivo en TMDL**. Los tipos **observados en Parquet** difieren en las
+> claves SK/FK (`uint32`) y en `dim_periodo.SEMESTRE` (`float64` con 6 nulos). Tratamiento
+> definido en `DECISION_REGISTER.md` **D006**: declarar `int64` en TMDL (compatible con
+> `uint32`); no modificar Parquet; los nulos de `SEMESTRE` corresponden a períodos ANUALES
+> (identificados por `TIPO_PERIODO`).
 
 ### 4.1 dim_local
 
@@ -118,8 +125,8 @@ Las particiones TMDL apuntan a estos archivos (modo import).
 - Relación esperada: dim_ubicacion → hechos (FK_Ubicacion) [POR VALIDAR].
 - `Region_Sur` (boolean) es la base del filtro obligatorio "Nivel sur del país":
   CONFIRMADO (True 23, False 75, 0 nulos, F001). Interpretación de negocio: DECISIÓN PENDIENTE.
-- `DEPARTAMENTO` es la base del filtro obligatorio "Departamento": CONFIRMADO (98 valores
-  sin nulos, F001).
+- `DEPARTAMENTO` es la base del filtro obligatorio "Departamento": CONFIRMADO (98
+  registros de ubicación; 25 departamentos distintos; sin nulos, F001).
 
 ### 4.5 dim_universidad
 
@@ -154,10 +161,11 @@ Las particiones TMDL apuntan a estos archivos (modo import).
 | FK_Ubicacion | int64 | FK | CONFIRMADO (existe). Integridad: CONFIRMADO (100%, 0 huérfanos, F001). |
 | SEXO | string | Atributo | CONFIRMADO (existe). |
 | RANGO_EDAD | string | Atributo | CONFIRMADO (existe). |
-| Conteo_Ingresantes | int64 | Métrica fuente | CONFIRMADO (existe). Semántica de agregación: [POR VALIDAR]. |
+| Conteo_Ingresantes | int64 | Métrica fuente | CONFIRMADO (existe). Aditividad técnica CONFIRMADO (D002); semántica de negocio: [POR VALIDAR]. |
 
-- Métrica fuente: `Conteo_Ingresantes`. Semántica de agregación: [POR VALIDAR]
-  (depende de la granularidad y el significado de la métrica).
+- Métrica fuente: `Conteo_Ingresantes`. Aditividad técnica CONFIRMADO (D002); semántica
+  de negocio de la agregación: [POR VALIDAR] (unidad persona vs registro; depende del
+  significado de la métrica).
 - Granularidad observable: [POR VALIDAR].
 - Correspondencia con dimensiones: CONFIRMADO (100% integridad FK, F001).
 
@@ -172,10 +180,11 @@ Las particiones TMDL apuntan a estos archivos (modo import).
 | FK_Local | int64 | FK | CONFIRMADO (existe). Integridad: CONFIRMADO (100%, 0 huérfanos, F001). |
 | SEXO | string | Atributo | CONFIRMADO (existe). |
 | RANGO_EDAD | string | Atributo | CONFIRMADO (existe). |
-| Conteo_Matriculados | int64 | Métrica fuente | CONFIRMADO (existe). Semántica de agregación: [POR VALIDAR]. |
+| Conteo_Matriculados | int64 | Métrica fuente | CONFIRMADO (existe). Aditividad técnica CONFIRMADO (D002); semántica de negocio: [POR VALIDAR]. |
 
-- Métrica fuente: `Conteo_Matriculados`. Semántica de agregación: [POR VALIDAR]
-  (depende de la granularidad y el significado de la métrica).
+- Métrica fuente: `Conteo_Matriculados`. Aditividad técnica CONFIRMADO (D002); semántica
+  de negocio de la agregación: [POR VALIDAR] (unidad persona vs registro; doble conteo
+  S1/S2; depende del significado de la métrica).
 - Granularidad observable: [POR VALIDAR].
 - Correspondencia con dimensiones: CONFIRMADO (100% integridad FK, F001).
 - `FK_Local` conecta con dim_local: CONFIRMADO (100% integridad, 0 huérfanos, F001).
@@ -184,21 +193,21 @@ Las particiones TMDL apuntan a estos archivos (modo import).
 
 - Relaciones definidas en el modelo: **0** (auditoría inicial).
 - Integridad FK → SK validada en F001: **100% en las 9 relaciones** (0 nulos, 0 huérfanos).
-- Cardinalidad evidenciada: **muchos-a-uno (1:N)** (dimensión en lado "uno", hecho en lado
-  "muchos").
-- Relaciones esperadas (integridad confirmada por F001; a crear en FASE 2):
+- Relaciones **candidatas** (integridad confirmada por F001); cardinalidad, dirección y
+  actividad = **decisión de modelado PROPOSED, pendiente de implementación y validación en
+  FASE 2** (ver `DECISION_REGISTER.md` D007):
 
 | Origen | Destino | Cardinalidad | Estado |
 | ------ | ------- | ------------ | ------ |
-| fact_ingresantes_dashboard (FK_Universidad) | dim_universidad (SK_Universidad) | CONFIRMADO (1:N) | Confirmada (F001) |
-| fact_ingresantes_dashboard (FK_Programa) | dim_programa (SK_Programa) | CONFIRMADO (1:N) | Confirmada (F001) |
-| fact_ingresantes_dashboard (FK_Periodo) | dim_periodo (SK_Periodo) | CONFIRMADO (1:N) | Confirmada (F001) |
-| fact_ingresantes_dashboard (FK_Ubicacion) | dim_ubicacion (SK_Ubicacion) | CONFIRMADO (1:N) | Confirmada (F001) |
-| fact_matriculados_dashboard (FK_Universidad) | dim_universidad (SK_Universidad) | CONFIRMADO (1:N) | Confirmada (F001) |
-| fact_matriculados_dashboard (FK_Programa) | dim_programa (SK_Programa) | CONFIRMADO (1:N) | Confirmada (F001) |
-| fact_matriculados_dashboard (FK_Periodo) | dim_periodo (SK_Periodo) | CONFIRMADO (1:N) | Confirmada (F001) |
-| fact_matriculados_dashboard (FK_Ubicacion) | dim_ubicacion (SK_Ubicacion) | CONFIRMADO (1:N) | Confirmada (F001) |
-| fact_matriculados_dashboard (FK_Local) | dim_local (SK_Local) | CONFIRMADO (1:N) | Confirmada (F001) |
+| fact_ingresantes_dashboard (FK_Universidad) | dim_universidad (SK_Universidad) | Candidata (1:N, evidenciada F001) | Candidata — diseño pendiente FASE 2 |
+| fact_ingresantes_dashboard (FK_Programa) | dim_programa (SK_Programa) | Candidata (1:N, evidenciada F001) | Candidata — diseño pendiente FASE 2 |
+| fact_ingresantes_dashboard (FK_Periodo) | dim_periodo (SK_Periodo) | Candidata (1:N, evidenciada F001) | Candidata — diseño pendiente FASE 2 |
+| fact_ingresantes_dashboard (FK_Ubicacion) | dim_ubicacion (SK_Ubicacion) | Candidata (1:N, evidenciada F001) | Candidata — diseño pendiente FASE 2 |
+| fact_matriculados_dashboard (FK_Universidad) | dim_universidad (SK_Universidad) | Candidata (1:N, evidenciada F001) | Candidata — diseño pendiente FASE 2 |
+| fact_matriculados_dashboard (FK_Programa) | dim_programa (SK_Programa) | Candidata (1:N, evidenciada F001) | Candidata — diseño pendiente FASE 2 |
+| fact_matriculados_dashboard (FK_Periodo) | dim_periodo (SK_Periodo) | Candidata (1:N, evidenciada F001) | Candidata — diseño pendiente FASE 2 |
+| fact_matriculados_dashboard (FK_Ubicacion) | dim_ubicacion (SK_Ubicacion) | Candidata (1:N, evidenciada F001) | Candidata — diseño pendiente FASE 2 |
+| fact_matriculados_dashboard (FK_Local) | dim_local (SK_Local) | Candidata (1:N, evidenciada F001) | Candidata — diseño pendiente FASE 2 |
 
 ## 7. Inventario de elementos [POR VALIDAR] y resueltos
 
@@ -212,6 +221,10 @@ Las particiones TMDL apuntan a estos archivos (modo import).
 - Cobertura temporal (rango): **CONFIRMADO** (2020-2025, sin huérfanos de período).
 - Correspondencia y consistencia entre dimensiones y hechos: **CONFIRMADO** (100%).
 - Valores de `Region_Sur`: **CONFIRMADO** (True 23 / False 75 / 0 nulos).
+- Granularidad dimensional y temporal de los hechos: **CONFIRMADO (D001)** —
+  `fact_ingresantes_dashboard` anual (fila = universidad, programa, período anual,
+  ubicación, SEXO, RANGO_EDAD); `fact_matriculados_dashboard` semestral (mismo conjunto +
+  FK_Local).
 
 ### Hechos observados (no convertidos a regla contractual)
 
@@ -222,8 +235,11 @@ Las particiones TMDL apuntan a estos archivos (modo import).
 
 ### Permanecen [POR VALIDAR]
 
-- Granularidad observable de cada hecho.
-- Semántica de agregación de `Conteo_Ingresantes` y `Conteo_Matriculados`.
+- Semántica de negocio de la granularidad (qué constituye un "ingresante"/"matriculado"):
+  PENDING (D001/D002).
+- Semántica de negocio de la agregación de `Conteo_Ingresantes` y `Conteo_Matriculados`
+  (unidad persona vs registro; doble conteo S1/S2; "Año completo"; "Sin dato") —
+  **aditividad técnica CONFIRMADO (D002)**.
 - Granularidad temporal de comparación (anual vs semestral) para las preguntas
   obligatorias.
 

@@ -109,7 +109,7 @@ powerbi-report-mcp    →  Report
 | Qué no debe modificar | TMDL, PBIR, PBIP. |
 | Riesgos | Lecturas con memoria insuficiente según tamaño de datos. |
 
-### 2.9 Pandas o Polars (decisión pendiente)
+### 2.9 Pandas o Polars
 
 | Campo | Detalle |
 | ----- | ------- |
@@ -119,7 +119,8 @@ powerbi-report-mcp    →  Report
 | Qué puede modificar | Nada del dashboard. |
 | Qué no debe modificar | TMDL, PBIR, PBIP. |
 | Riesgos | Elección de librería sin confirmar; diferencias de rendimiento según volumen. |
-| Estado | **DECISIÓN PENDIENTE** — Pandas o Polars se decide al iniciar FASE 1. |
+| Estado | **Resuelto para F001 (pandas)** — la auditoría F001 se ejecutó con pandas; la
+elección permanece pendiente para otros usos futuros. |
 
 ### 2.10 Documentación Markdown
 

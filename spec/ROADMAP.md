@@ -19,6 +19,11 @@ Este proyecto utiliza **dos niveles de planificación independientes**:
 - Una **FEATURE** se crea formalmente (carpeta `features/FXXX/` con `SPEC.md`,
   `PLAN.md` y `TASKS.md`) **solo cuando la fase que la contiene está autorizada a
   ejecutarse**.
+- **Excepción de fundación documental (A5):** una feature de **fundación** (documentación
+  únicamente: SPEC/PLAN/TASKS + artefactos de decisión, comportamiento o evidencia) puede
+  crearse **antes** de autorizar la implementación de su fase, para preparar la base sin
+  tocar el modelo ni el reporte. La implementación de la fase sigue requiriendo aprobación
+  explícita (ej.: `F002` creada previo a FASE 2).
 - En esta ejecución (FASE 0) **no se crea ninguna feature**.
 
 ### Mapeo FASE → FEATURE (planificado)
@@ -26,8 +31,8 @@ Este proyecto utiliza **dos niveles de planificación independientes**:
 | FASE | FEATURE(s) planificadas | Estado de creación |
 | ---- | ----------------------- | ------------------ |
 | FASE 0 | — (documentación, no ejecutable) | Completa. Sin features. |
-| FASE 1 | `F001 — Data Quality Audit` | Creada y en ejecución (FASE 1). |
-| FASE 2 | `F002 — Semantic Model` [provisional] | Por definir al aprobar FASE 1. |
+| FASE 1 | `F001 — Data Quality Audit` | Creada y completada (FASE 1; GATE 1 aprobado). |
+| FASE 2 | `F002 — Semantic Model` [provisional] | Fundación documental COMPLETADA (Decision Register + Semantic Behavior Matrix + Feature Spec/Plan/Tasks); implementación PENDING. |
 | FASE 3 | `F003 — Core Metrics` [provisional] | Por definir al aprobar FASE 2. |
 | FASE 4 | `F004 — Information Architecture / UX` [provisional] | Por definir al aprobar FASE 3. |
 | FASE 5 | `F005 — Benchmark Analysis` [provisional] | Por definir al aprobar FASE 4. |
@@ -114,6 +119,35 @@ Ninguna fase inicia sin aprobar el gate de la fase anterior.
   filtrado.
 - **Quality Gate:** GATE 2 — Semantic Model.
 
+#### Decisiones pendientes de FASE 2 (incorporadas post-F001)
+
+Estas necesidades **no están implementadas** y quedan registradas como
+`DECISIÓN PENDIENTE / FASE 2`.
+
+1. **Clasificación geográfica Norte / Centro / Sur.**
+   `dim_ubicacion` solo dispone de `Region_Sur` (True/False), que identifica el Sur pero
+   no proporciona una clasificación completa Norte/Centro/Sur. Antes de implementarla
+   debe definirse y documentarse la **regla exacta de asignación geográfica**
+   (Departamento / ubicación → clasificación → Norte / Centro / Sur). No se inventa
+   todavía la lista de departamentos por zona.
+
+2. **Selector temporal (Año + Nivel temporal).**
+   La experiencia del usuario deberá permitir seleccionar `Año` y el nivel temporal
+   `[Año completo | Semestre I | Semestre II]`, respetando estrictamente la granularidad
+   de cada hecho (observada en F001):
+   - INGRESANTES (`fact_ingresantes_dashboard`, períodos anuales): Año completo
+     disponible; **Semestre I / II no existen** en la fuente → no fabricar datos
+     semestrales.
+   - MATRICULADOS (`fact_matriculados_dashboard`, períodos semestrales): Semestre I / II
+     disponibles; Año completo evaluable a partir de sus períodos semestrales.
+   No se asume todavía cómo se implementará técnicamente el selector.
+
+3. **Granularidad temporal por hecho.**
+   La diferencia anual/semestral **no se interpreta como error automáticamente**:
+   - `fact_ingresantes_dashboard` → granularidad temporal observable **anual**.
+   - `fact_matriculados_dashboard` → granularidad temporal observable **semestral**.
+   La implementación futura respetará la granularidad real de cada fuente.
+
 ### FASE 3 — Core Metrics
 
 - **Objetivo:** definir e implementar las medidas DAX base para ingresantes y
@@ -197,9 +231,9 @@ Ninguna fase inicia sin aprobar el gate de la fase anterior.
 
 | FASE | Nombre | Gate de salida | Estado |
 | ---- | ------ | -------------- | ------ |
-| FASE 0 | Foundation / Documentation | GATE 0 | En ejecución |
-| FASE 1 | Data Quality Audit | GATE 1 | En ejecución (F001 creada) |
-| FASE 2 | Semantic Model | GATE 2 | Planificada |
+| FASE 0 | Foundation / Documentation | GATE 0 | Completada (GATE 0 aprobado) |
+| FASE 1 | Data Quality Audit | GATE 1 | Completada (GATE 1 aprobado — PASS WITH WARNINGS) |
+| FASE 2 | Semantic Model | GATE 2 | Planificada — fundación documental completada; implementación PENDING |
 | FASE 3 | Core Metrics | GATE 3 | Planificada |
 | FASE 4 | Information Architecture / UX | GATE 4 | Planificada |
 | FASE 5 | Benchmark Analysis | GATE 5 | Planificada |
@@ -211,5 +245,8 @@ Ninguna fase inicia sin aprobar el gate de la fase anterior.
 
 - Estado: **Vigente desde la FASE 0**.
 - Las features `F002`–`F008` son provisionales.
+- `F002` fundación documental **COMPLETADA** en `features/F002-semantic-model-foundation/`
+  (FEATURE_SPEC, PLAN, TASKS, DECISION_REGISTER D001–D007, SEMANTIC_BEHAVIOR_MATRIX);
+  **implementación PENDING** — FASE 2 no iniciada.
 - `F001` creada en `features/F001-data-quality-audit/` al iniciar FASE 1 (SPEC, PLAN,
   TASKS, script y reporte de calidad).

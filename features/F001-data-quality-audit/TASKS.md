@@ -6,6 +6,14 @@
 | Fase | FASE 1 |
 | Formato | Checklist `[ ]` pendiente / `[x]` completada |
 
+## Reorganización de código (post-F001)
+
+- [x] Mover `audit_data_quality.py` a `src/audits/audit_data_quality.py`.
+- [x] Crear `src/audits/__init__.py` (paquete consistente con `src/`).
+- [x] Eliminar el script de `features/F001-data-quality-audit/` (sin duplicados).
+- [x] Actualizar referencias documentales al script (SPEC, PLAN, DATA_CONTRACT, reporte).
+- [x] Documentar decisiones pendientes de FASE 2 (geográfica, temporal, granularidad).
+
 ## Preparación
 
 - [x] Inspeccionar repositorio y confirmar ausencia de `features/`.
@@ -22,7 +30,7 @@
 
 ## Script de auditoría
 
-- [x] Crear `audit_data_quality.py` (solo lectura).
+- [x] Crear `src/audits/audit_data_quality.py` (solo lectura).
 - [x] Implementar inventario de datasets.
 - [x] Implementar lectura de schema.
 - [x] Implementar unicidad de SK.
@@ -36,8 +44,9 @@
 
 ## Ejecución
 
-- [x] Ejecutar `audit_data_quality.py`.
+- [x] Ejecutar `src/audits/audit_data_quality.py`.
 - [x] Revisar salida de ejecución (2 intentos fallidos corregidos; ver DATA_QUALITY_REPORT §12).
+- [x] Re-ejecutar el script desde su nueva ubicación (`src/audits/`) y confirmar resultados idénticos.
 
 ## Reporte
 

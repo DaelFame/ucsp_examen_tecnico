@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "demanda_UCSP"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "61ce40d5-e1ad-47a0-b602-c072623b44d3"
+  }
+}

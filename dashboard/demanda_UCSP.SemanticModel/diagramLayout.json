@@ -1,0 +1,113 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 417.16261158271305,
+            "y": 0
+          },
+          "nodeIndex": "fact_matriculados_dashboard",
+          "nodeLineageTag": "70e0de65-7ef4-4261-892b-2fd96949a233",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 851.96125833727478,
+            "y": 12
+          },
+          "nodeIndex": "fact_ingresantes_dashboard",
+          "nodeLineageTag": "7591cf60-270d-41e1-bccd-9a0f6660ecad",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 396.74794919621843
+          },
+          "nodeIndex": "dim_universidad",
+          "nodeLineageTag": "aab2972e-af85-4ea3-a596-6cf97191fbfe",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 269.94541019033613,
+            "y": 403.15195310420165
+          },
+          "nodeIndex": "dim_ubicacion",
+          "nodeLineageTag": "2d741478-3cdc-44d8-a2b4-463fd8028eb5",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 562.40140907376963,
+            "y": 412.93461214099636
+          },
+          "nodeIndex": "dim_programa",
+          "nodeLineageTag": "5b4c9cd7-a9ae-4dc5-be8f-d0c42fd08a06",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 853.448074809964,
+            "y": 413.701283460024
+          },
+          "nodeIndex": "dim_periodo",
+          "nodeLineageTag": "81189688-6174-45d9-818d-3266fa89f80a",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1167.0440709019808,
+            "y": 408.0226143741296
+          },
+          "nodeIndex": "dim_local",
+          "nodeLineageTag": "658a6ac4-fd79-4d55-8f89-2e655637d269",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 70.95554390096882,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

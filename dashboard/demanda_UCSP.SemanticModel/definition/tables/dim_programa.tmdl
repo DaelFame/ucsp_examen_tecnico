@@ -1,0 +1,83 @@
+table dim_programa
+	lineageTag: 5b4c9cd7-a9ae-4dc5-be8f-d0c42fd08a06
+
+	column SK_Programa
+		dataType: int64
+		formatString: 0
+		lineageTag: c38dfdde-f179-4b13-8b81-efbda999c446
+		summarizeBy: sum
+		sourceColumn: SK_Programa
+
+		annotation SummarizationSetBy = Automatic
+
+	column CODIGO_SIU_PROGRAMA
+		dataType: int64
+		formatString: 0
+		lineageTag: 017545bc-db33-49ca-a749-8c6a1fd32a98
+		summarizeBy: sum
+		sourceColumn: CODIGO_SIU_PROGRAMA
+
+		annotation SummarizationSetBy = Automatic
+
+	column NOMBRE_PROGRAMA
+		dataType: string
+		lineageTag: bae8c3b9-daff-41cb-9fe9-d90dd6b771bf
+		summarizeBy: none
+		sourceColumn: NOMBRE_PROGRAMA
+
+		annotation SummarizationSetBy = Automatic
+
+	column CODIGO_GRUPO_1
+		dataType: double
+		lineageTag: df57e7d6-7b15-4347-ac12-181d337223f8
+		summarizeBy: sum
+		sourceColumn: CODIGO_GRUPO_1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NOMBRE_GRUPO_1
+		dataType: string
+		lineageTag: 992f748d-4525-42cd-bda9-004a801d5dca
+		summarizeBy: none
+		sourceColumn: NOMBRE_GRUPO_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column CODIGO_GRUPO_3
+		dataType: double
+		lineageTag: 880225e4-b1e2-43c1-8199-31a5adc81ff6
+		summarizeBy: sum
+		sourceColumn: CODIGO_GRUPO_3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NOMBRE_GRUPO_3
+		dataType: string
+		lineageTag: b633a968-6ba6-45f5-8dae-593cf800760a
+		summarizeBy: none
+		sourceColumn: NOMBRE_GRUPO_3
+
+		annotation SummarizationSetBy = Automatic
+
+	column NIVEL_ACADEMICO
+		dataType: string
+		lineageTag: dc880769-890b-4261-b06d-a33717bf5bfb
+		summarizeBy: none
+		sourceColumn: NIVEL_ACADEMICO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_programa = m
+		mode: import
+		source =
+				let
+				    Origen = Parquet.Document(File.Contents("D:\Proyectos\A.Prueba Tecnica UCSP\data\Dashboard_parquet\dim_programa.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

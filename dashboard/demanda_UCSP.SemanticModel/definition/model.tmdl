@@ -1,0 +1,25 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-PE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["fact_matriculados_dashboard","fact_ingresantes_dashboard","dim_universidad","dim_ubicacion","dim_programa","dim_periodo","dim_local"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table fact_matriculados_dashboard
+ref table fact_ingresantes_dashboard
+ref table dim_universidad
+ref table dim_ubicacion
+ref table dim_programa
+ref table dim_periodo
+ref table dim_local
+
+ref cultureInfo es-ES
+

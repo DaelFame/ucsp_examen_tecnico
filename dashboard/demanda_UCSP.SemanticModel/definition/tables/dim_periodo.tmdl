@@ -1,0 +1,56 @@
+table dim_periodo
+	lineageTag: 81189688-6174-45d9-818d-3266fa89f80a
+
+	column SK_Periodo
+		dataType: int64
+		formatString: 0
+		lineageTag: 3dd6efee-1f7c-48f9-9343-cef5a4d40f3c
+		summarizeBy: sum
+		sourceColumn: SK_Periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANIO
+		dataType: int64
+		formatString: 0
+		lineageTag: 3dd3ded7-dd33-49a6-a4a4-2b5572d8f075
+		summarizeBy: sum
+		sourceColumn: ANIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEMESTRE
+		dataType: int64
+		formatString: 0
+		lineageTag: 78144cbc-cd80-4c3e-805b-d999dce2e9a3
+		summarizeBy: sum
+		sourceColumn: SEMESTRE
+
+		annotation SummarizationSetBy = Automatic
+
+	column LABEL_PERIODO
+		dataType: string
+		lineageTag: f84b9fb1-1a38-4d3c-8153-4c454b5ad0aa
+		summarizeBy: none
+		sourceColumn: LABEL_PERIODO
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIPO_PERIODO
+		dataType: string
+		lineageTag: 428a4254-a4e4-4fb5-b9a9-ec8b163c101f
+		summarizeBy: none
+		sourceColumn: TIPO_PERIODO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_periodo = m
+		mode: import
+		source =
+				let
+				    Origen = Parquet.Document(File.Contents("D:\Proyectos\A.Prueba Tecnica UCSP\data\Dashboard_parquet\dim_periodo.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

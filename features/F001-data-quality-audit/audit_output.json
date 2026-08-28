@@ -1,0 +1,763 @@
+{
+  "file_discovery": {
+    "data_dir": "D:\\Proyectos\\A.Prueba Tecnica UCSP\\data\\Dashboard_parquet",
+    "expected": [
+      "dim_local.parquet",
+      "dim_periodo.parquet",
+      "dim_programa.parquet",
+      "dim_ubicacion.parquet",
+      "dim_universidad.parquet",
+      "fact_ingresantes_dashboard.parquet",
+      "fact_matriculados_dashboard.parquet"
+    ],
+    "available": [
+      "dim_local.parquet",
+      "dim_periodo.parquet",
+      "dim_programa.parquet",
+      "dim_ubicacion.parquet",
+      "dim_universidad.parquet",
+      "fact_ingresantes_dashboard.parquet",
+      "fact_matriculados_dashboard.parquet"
+    ],
+    "missing": [],
+    "unexpected": []
+  },
+  "inventory": {
+    "dim_local.parquet": {
+      "rows": 65,
+      "columns": 7,
+      "schema": {
+        "SK_Local": "uint32",
+        "CODIGO_LOCAL": "str",
+        "DEPARTAMENTO_LOCAL": "str",
+        "PROVINCIA_LOCAL": "str",
+        "DISTRITO_LOCAL": "str",
+        "ES_LOCAL_PRINCIPAL": "str",
+        "CODIGO_UBIGEO_INEI_LOCAL": "int64"
+      }
+    },
+    "dim_periodo.parquet": {
+      "rows": 18,
+      "columns": 5,
+      "schema": {
+        "SK_Periodo": "uint32",
+        "ANIO": "int64",
+        "SEMESTRE": "float64",
+        "LABEL_PERIODO": "str",
+        "TIPO_PERIODO": "str"
+      }
+    },
+    "dim_programa.parquet": {
+      "rows": 537,
+      "columns": 8,
+      "schema": {
+        "SK_Programa": "uint32",
+        "CODIGO_SIU_PROGRAMA": "int64",
+        "NOMBRE_PROGRAMA": "str",
+        "CODIGO_GRUPO_1": "float64",
+        "NOMBRE_GRUPO_1": "str",
+        "CODIGO_GRUPO_3": "float64",
+        "NOMBRE_GRUPO_3": "str",
+        "NIVEL_ACADEMICO": "str"
+      }
+    },
+    "dim_ubicacion.parquet": {
+      "rows": 98,
+      "columns": 4,
+      "schema": {
+        "SK_Ubicacion": "uint32",
+        "DEPARTAMENTO": "str",
+        "PROVINCIA": "str",
+        "Region_Sur": "bool"
+      }
+    },
+    "dim_universidad.parquet": {
+      "rows": 177,
+      "columns": 7,
+      "schema": {
+        "SK_Universidad": "uint32",
+        "CODIGO_INEI": "str",
+        "NOMBRE_ENTIDAD": "str",
+        "TIPO_ENTIDAD": "str",
+        "TIPO_GESTION": "str",
+        "TIPO_CONSTITUCION": "str",
+        "ESTADO_LICENCIAMIENTO": "str"
+      }
+    },
+    "fact_ingresantes_dashboard.parquet": {
+      "rows": 166666,
+      "columns": 7,
+      "schema": {
+        "FK_Universidad": "uint32",
+        "FK_Programa": "uint32",
+        "FK_Periodo": "uint32",
+        "FK_Ubicacion": "uint32",
+        "SEXO": "str",
+        "RANGO_EDAD": "str",
+        "Conteo_Ingresantes": "uint32"
+      }
+    },
+    "fact_matriculados_dashboard.parquet": {
+      "rows": 450448,
+      "columns": 8,
+      "schema": {
+        "FK_Universidad": "uint32",
+        "FK_Programa": "uint32",
+        "FK_Periodo": "uint32",
+        "FK_Ubicacion": "uint32",
+        "FK_Local": "uint32",
+        "SEXO": "str",
+        "RANGO_EDAD": "str",
+        "Conteo_Matriculados": "uint32"
+      }
+    }
+  },
+  "dimensions": {
+    "dim_local": {
+      "sk_columns_found": [
+        "SK_Local"
+      ],
+      "sk": "SK_Local",
+      "nulls": {
+        "total": 65,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "unique": 65,
+      "duplicate": 0
+    },
+    "dim_periodo": {
+      "sk_columns_found": [
+        "SK_Periodo"
+      ],
+      "sk": "SK_Periodo",
+      "nulls": {
+        "total": 18,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "unique": 18,
+      "duplicate": 0
+    },
+    "dim_programa": {
+      "sk_columns_found": [
+        "SK_Programa"
+      ],
+      "sk": "SK_Programa",
+      "nulls": {
+        "total": 537,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "unique": 537,
+      "duplicate": 0
+    },
+    "dim_ubicacion": {
+      "sk_columns_found": [
+        "SK_Ubicacion"
+      ],
+      "sk": "SK_Ubicacion",
+      "nulls": {
+        "total": 98,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "unique": 98,
+      "duplicate": 0
+    },
+    "dim_universidad": {
+      "sk_columns_found": [
+        "SK_Universidad"
+      ],
+      "sk": "SK_Universidad",
+      "nulls": {
+        "total": 177,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "unique": 177,
+      "duplicate": 0
+    }
+  },
+  "facts": {
+    "fact_ingresantes_dashboard": {
+      "fk_columns": [
+        "FK_Universidad",
+        "FK_Programa",
+        "FK_Periodo",
+        "FK_Ubicacion"
+      ],
+      "fk_integrity": {
+        "FK_Universidad": {
+          "target_dim": "dim_universidad",
+          "target_sk": "SK_Universidad",
+          "total": 166666,
+          "null": 0,
+          "valid": 166666,
+          "orphan": 0,
+          "integrity_pct_non_null": 100.0,
+          "integrity_pct_total": 100.0
+        },
+        "FK_Programa": {
+          "target_dim": "dim_programa",
+          "target_sk": "SK_Programa",
+          "total": 166666,
+          "null": 0,
+          "valid": 166666,
+          "orphan": 0,
+          "integrity_pct_non_null": 100.0,
+          "integrity_pct_total": 100.0
+        },
+        "FK_Periodo": {
+          "target_dim": "dim_periodo",
+          "target_sk": "SK_Periodo",
+          "total": 166666,
+          "null": 0,
+          "valid": 166666,
+          "orphan": 0,
+          "integrity_pct_non_null": 100.0,
+          "integrity_pct_total": 100.0
+        },
+        "FK_Ubicacion": {
+          "target_dim": "dim_ubicacion",
+          "target_sk": "SK_Ubicacion",
+          "total": 166666,
+          "null": 0,
+          "valid": 166666,
+          "orphan": 0,
+          "integrity_pct_non_null": 100.0,
+          "integrity_pct_total": 100.0
+        }
+      }
+    },
+    "fact_matriculados_dashboard": {
+      "fk_columns": [
+        "FK_Universidad",
+        "FK_Programa",
+        "FK_Periodo",
+        "FK_Ubicacion",
+        "FK_Local"
+      ],
+      "fk_integrity": {
+        "FK_Universidad": {
+          "target_dim": "dim_universidad",
+          "target_sk": "SK_Universidad",
+          "total": 450448,
+          "null": 0,
+          "valid": 450448,
+          "orphan": 0,
+          "integrity_pct_non_null": 100.0,
+          "integrity_pct_total": 100.0
+        },
+        "FK_Programa": {
+          "target_dim": "dim_programa",
+          "target_sk": "SK_Programa",
+          "total": 450448,
+          "null": 0,
+          "valid": 450448,
+          "orphan": 0,
+          "integrity_pct_non_null": 100.0,
+          "integrity_pct_total": 100.0
+        },
+        "FK_Periodo": {
+          "target_dim": "dim_periodo",
+          "target_sk": "SK_Periodo",
+          "total": 450448,
+          "null": 0,
+          "valid": 450448,
+          "orphan": 0,
+          "integrity_pct_non_null": 100.0,
+          "integrity_pct_total": 100.0
+        },
+        "FK_Ubicacion": {
+          "target_dim": "dim_ubicacion",
+          "target_sk": "SK_Ubicacion",
+          "total": 450448,
+          "null": 0,
+          "valid": 450448,
+          "orphan": 0,
+          "integrity_pct_non_null": 100.0,
+          "integrity_pct_total": 100.0
+        },
+        "FK_Local": {
+          "target_dim": "dim_local",
+          "target_sk": "SK_Local",
+          "total": 450448,
+          "null": 0,
+          "valid": 450448,
+          "orphan": 0,
+          "integrity_pct_non_null": 100.0,
+          "integrity_pct_total": 100.0
+        }
+      }
+    }
+  },
+  "nulls": {
+    "dim_local.parquet": {
+      "SK_Local": {
+        "total": 65,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "CODIGO_LOCAL": {
+        "total": 65,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "DEPARTAMENTO_LOCAL": {
+        "total": 65,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "PROVINCIA_LOCAL": {
+        "total": 65,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "DISTRITO_LOCAL": {
+        "total": 65,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "ES_LOCAL_PRINCIPAL": {
+        "total": 65,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "CODIGO_UBIGEO_INEI_LOCAL": {
+        "total": 65,
+        "null": 0,
+        "null_pct": 0.0
+      }
+    },
+    "dim_periodo.parquet": {
+      "SK_Periodo": {
+        "total": 18,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "ANIO": {
+        "total": 18,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "SEMESTRE": {
+        "total": 18,
+        "null": 6,
+        "null_pct": 33.3333
+      },
+      "LABEL_PERIODO": {
+        "total": 18,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "TIPO_PERIODO": {
+        "total": 18,
+        "null": 0,
+        "null_pct": 0.0
+      }
+    },
+    "dim_programa.parquet": {
+      "SK_Programa": {
+        "total": 537,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "CODIGO_SIU_PROGRAMA": {
+        "total": 537,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "NOMBRE_PROGRAMA": {
+        "total": 537,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "CODIGO_GRUPO_1": {
+        "total": 537,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "NOMBRE_GRUPO_1": {
+        "total": 537,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "CODIGO_GRUPO_3": {
+        "total": 537,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "NOMBRE_GRUPO_3": {
+        "total": 537,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "NIVEL_ACADEMICO": {
+        "total": 537,
+        "null": 0,
+        "null_pct": 0.0
+      }
+    },
+    "dim_ubicacion.parquet": {
+      "SK_Ubicacion": {
+        "total": 98,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "DEPARTAMENTO": {
+        "total": 98,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "PROVINCIA": {
+        "total": 98,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "Region_Sur": {
+        "total": 98,
+        "null": 0,
+        "null_pct": 0.0
+      }
+    },
+    "dim_universidad.parquet": {
+      "SK_Universidad": {
+        "total": 177,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "CODIGO_INEI": {
+        "total": 177,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "NOMBRE_ENTIDAD": {
+        "total": 177,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "TIPO_ENTIDAD": {
+        "total": 177,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "TIPO_GESTION": {
+        "total": 177,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "TIPO_CONSTITUCION": {
+        "total": 177,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "ESTADO_LICENCIAMIENTO": {
+        "total": 177,
+        "null": 0,
+        "null_pct": 0.0
+      }
+    },
+    "fact_ingresantes_dashboard.parquet": {
+      "FK_Universidad": {
+        "total": 166666,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "FK_Programa": {
+        "total": 166666,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "FK_Periodo": {
+        "total": 166666,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "FK_Ubicacion": {
+        "total": 166666,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "SEXO": {
+        "total": 166666,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "RANGO_EDAD": {
+        "total": 166666,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "Conteo_Ingresantes": {
+        "total": 166666,
+        "null": 0,
+        "null_pct": 0.0
+      }
+    },
+    "fact_matriculados_dashboard.parquet": {
+      "FK_Universidad": {
+        "total": 450448,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "FK_Programa": {
+        "total": 450448,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "FK_Periodo": {
+        "total": 450448,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "FK_Ubicacion": {
+        "total": 450448,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "FK_Local": {
+        "total": 450448,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "SEXO": {
+        "total": 450448,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "RANGO_EDAD": {
+        "total": 450448,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "Conteo_Matriculados": {
+        "total": 450448,
+        "null": 0,
+        "null_pct": 0.0
+      }
+    }
+  },
+  "ucsp": {
+    "searched": "UNIVERSIDAD CATÓLICA SAN PABLO",
+    "exact_match_count": 0,
+    "case_insensitive_match_count": 0,
+    "normalized_match_count": 1,
+    "full_upper_match_count": 1,
+    "variants_found": [
+      "PONTIFICIA UNIVERSIDAD CATOLICA DEL PERU",
+      "UNIVERSIDAD CATOLICA DE SANTA MARIA",
+      "UNIVERSIDAD CATOLICA DE TRUJILLO BENEDICTO XVI",
+      "UNIVERSIDAD CATOLICA LOS ANGELES DE CHIMBOTE",
+      "UNIVERSIDAD CATOLICA SAN PABLO",
+      "UNIVERSIDAD CATOLICA SANTO TORIBIO DE MOGROVEJO",
+      "UNIVERSIDAD CATOLICA SEDES SAPIENTIAE"
+    ],
+    "total_entities": 177
+  },
+  "tipo_gestion": {
+    "PRIVADO": {
+      "count": 90,
+      "pct": 50.8475
+    },
+    "PUBLICO": {
+      "count": 87,
+      "pct": 49.1525
+    }
+  },
+  "region_sur": {
+    "False": {
+      "count": 75,
+      "pct": 76.5306
+    },
+    "True": {
+      "count": 23,
+      "pct": 23.4694
+    }
+  },
+  "nivel_academico": {
+    "distinct_values": [
+      "CARRERA PROFESIONAL",
+      "DOCTORADO",
+      "MAESTRIA",
+      "SEGUNDA ESPECIALIDAD"
+    ],
+    "frequencies": {
+      "MAESTRIA": {
+        "count": 249,
+        "pct": 46.3687
+      },
+      "CARRERA PROFESIONAL": {
+        "count": 131,
+        "pct": 24.3948
+      },
+      "SEGUNDA ESPECIALIDAD": {
+        "count": 125,
+        "pct": 23.2775
+      },
+      "DOCTORADO": {
+        "count": 32,
+        "pct": 5.959
+      }
+    },
+    "pregrado_presence": false,
+    "pregrado_count": 0
+  },
+  "temporal_coverage": {
+    "dim_periodo": {
+      "rows": 18,
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "semesters": [
+        1,
+        2
+      ],
+      "semester_null": 6,
+      "periods_anio_semestre": [
+        [
+          2020,
+          1
+        ],
+        [
+          2020,
+          2
+        ],
+        [
+          2021,
+          1
+        ],
+        [
+          2021,
+          2
+        ],
+        [
+          2022,
+          1
+        ],
+        [
+          2022,
+          2
+        ],
+        [
+          2023,
+          1
+        ],
+        [
+          2023,
+          2
+        ],
+        [
+          2024,
+          1
+        ],
+        [
+          2024,
+          2
+        ],
+        [
+          2025,
+          1
+        ],
+        [
+          2025,
+          2
+        ]
+      ],
+      "has_sk_periodo": true
+    },
+    "fact_ingresantes_dashboard": {
+      "fk_period_total": 166666,
+      "fk_period_null": 0,
+      "distinct_fk_period": 6,
+      "years_in_fact": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "period_keys_in_fact_not_in_dim": [],
+      "period_keys_in_dim_not_in_fact": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11,
+        12,
+        14,
+        15,
+        17,
+        18
+      ],
+      "period_keys_in_dim_not_in_fact_count": 12
+    },
+    "fact_matriculados_dashboard": {
+      "fk_period_total": 450448,
+      "fk_period_null": 0,
+      "distinct_fk_period": 12,
+      "years_in_fact": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "period_keys_in_fact_not_in_dim": [],
+      "period_keys_in_dim_not_in_fact": [
+        1,
+        4,
+        7,
+        10,
+        13,
+        16
+      ],
+      "period_keys_in_dim_not_in_fact_count": 6
+    }
+  },
+  "metrics": {
+    "Conteo_Ingresantes": {
+      "dtype": "uint32",
+      "null": {
+        "total": 166666,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "min": 1.0,
+      "max": 2255.0,
+      "zeros": 0,
+      "negative": 0,
+      "cardinality": 715,
+      "all_rows_equal_one": false,
+      "rows_equal_one": 35381,
+      "rows_equal_one_pct": 21.2287,
+      "total_rows": 166666
+    },
+    "Conteo_Matriculados": {
+      "dtype": "uint32",
+      "null": {
+        "total": 450448,
+        "null": 0,
+        "null_pct": 0.0
+      },
+      "min": 1.0,
+      "max": 3460.0,
+      "zeros": 0,
+      "negative": 0,
+      "cardinality": 1631,
+      "all_rows_equal_one": false,
+      "rows_equal_one": 82983,
+      "rows_equal_one_pct": 18.4223,
+      "total_rows": 450448
+    }
+  }
+}

@@ -1,0 +1,83 @@
+table fact_matriculados_dashboard
+	lineageTag: 70e0de65-7ef4-4261-892b-2fd96949a233
+
+	column FK_Universidad
+		dataType: int64
+		formatString: 0
+		lineageTag: a914ecb6-500f-4fb6-abde-8a93cc8f2eac
+		summarizeBy: sum
+		sourceColumn: FK_Universidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column FK_Programa
+		dataType: int64
+		formatString: 0
+		lineageTag: 4cb8375b-c9c0-4471-88d0-ca4bb69fd726
+		summarizeBy: sum
+		sourceColumn: FK_Programa
+
+		annotation SummarizationSetBy = Automatic
+
+	column FK_Periodo
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f3c90c0-2a9a-4645-afcf-664edcda88a4
+		summarizeBy: sum
+		sourceColumn: FK_Periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column FK_Ubicacion
+		dataType: int64
+		formatString: 0
+		lineageTag: cb91e1f0-eb2e-4429-b5a1-310ebbcf273d
+		summarizeBy: sum
+		sourceColumn: FK_Ubicacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column FK_Local
+		dataType: int64
+		formatString: 0
+		lineageTag: 0acbd6b6-8b6b-4e59-9bb2-06f51456f918
+		summarizeBy: sum
+		sourceColumn: FK_Local
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEXO
+		dataType: string
+		lineageTag: 6b32ff81-da6e-4971-a4b5-a35d13fa4eca
+		summarizeBy: none
+		sourceColumn: SEXO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RANGO_EDAD
+		dataType: string
+		lineageTag: c48f5ead-3df7-4557-8b0c-fdbc5bb09b07
+		summarizeBy: none
+		sourceColumn: RANGO_EDAD
+
+		annotation SummarizationSetBy = Automatic
+
+	column Conteo_Matriculados
+		dataType: int64
+		formatString: 0
+		lineageTag: 48488cbc-bfa7-4eaf-bd75-9bd432f0a7a5
+		summarizeBy: sum
+		sourceColumn: Conteo_Matriculados
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_matriculados_dashboard = m
+		mode: import
+		source =
+				let
+				    Origen = Parquet.Document(File.Contents("D:\Proyectos\A.Prueba Tecnica UCSP\data\Dashboard_parquet\fact_matriculados_dashboard.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

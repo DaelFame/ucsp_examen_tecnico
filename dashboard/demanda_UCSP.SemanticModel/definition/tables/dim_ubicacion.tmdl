@@ -1,0 +1,47 @@
+table dim_ubicacion
+	lineageTag: 2d741478-3cdc-44d8-a2b4-463fd8028eb5
+
+	column SK_Ubicacion
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a9d553c-2e5c-4b91-be41-eb909da10e95
+		summarizeBy: sum
+		sourceColumn: SK_Ubicacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTAMENTO
+		dataType: string
+		lineageTag: b7e33343-a257-4f96-817c-1c2c613f34ed
+		summarizeBy: none
+		sourceColumn: DEPARTAMENTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROVINCIA
+		dataType: string
+		lineageTag: 1c63d0df-8211-4a7e-b693-238a35f717a8
+		summarizeBy: none
+		sourceColumn: PROVINCIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region_Sur
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 43688b12-054a-43ec-9a5e-628b85d4bb03
+		summarizeBy: none
+		sourceColumn: Region_Sur
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_ubicacion = m
+		mode: import
+		source =
+				let
+				    Origen = Parquet.Document(File.Contents("D:\Proyectos\A.Prueba Tecnica UCSP\data\Dashboard_parquet\dim_ubicacion.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

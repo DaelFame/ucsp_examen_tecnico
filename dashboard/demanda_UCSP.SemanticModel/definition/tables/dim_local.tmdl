@@ -1,0 +1,71 @@
+table dim_local
+	lineageTag: 658a6ac4-fd79-4d55-8f89-2e655637d269
+
+	column SK_Local
+		dataType: int64
+		formatString: 0
+		lineageTag: a90c13ca-d9aa-4044-8545-d9d34f6f0a97
+		summarizeBy: sum
+		sourceColumn: SK_Local
+
+		annotation SummarizationSetBy = Automatic
+
+	column CODIGO_LOCAL
+		dataType: string
+		lineageTag: 12e1bd87-9738-4d2d-8075-5d5473233648
+		summarizeBy: none
+		sourceColumn: CODIGO_LOCAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTAMENTO_LOCAL
+		dataType: string
+		lineageTag: 31a83470-c0c7-446a-94d5-4b05048affc3
+		summarizeBy: none
+		sourceColumn: DEPARTAMENTO_LOCAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROVINCIA_LOCAL
+		dataType: string
+		lineageTag: 3d34e0f9-5435-469c-9f7a-3d9f55a76dca
+		summarizeBy: none
+		sourceColumn: PROVINCIA_LOCAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISTRITO_LOCAL
+		dataType: string
+		lineageTag: 8c3493b4-b628-40b0-b913-dc70b709dfe9
+		summarizeBy: none
+		sourceColumn: DISTRITO_LOCAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column ES_LOCAL_PRINCIPAL
+		dataType: string
+		lineageTag: 57188eed-1aaf-4533-806a-a4e672f1e225
+		summarizeBy: none
+		sourceColumn: ES_LOCAL_PRINCIPAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column CODIGO_UBIGEO_INEI_LOCAL
+		dataType: int64
+		formatString: 0
+		lineageTag: b4fbb772-abcf-4381-a7cc-48e8f7df8a85
+		summarizeBy: sum
+		sourceColumn: CODIGO_UBIGEO_INEI_LOCAL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_local = m
+		mode: import
+		source =
+				let
+				    Origen = Parquet.Document(File.Contents("D:\Proyectos\A.Prueba Tecnica UCSP\data\Dashboard_parquet\dim_local.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

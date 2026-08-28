@@ -1,0 +1,70 @@
+table dim_universidad
+	lineageTag: aab2972e-af85-4ea3-a596-6cf97191fbfe
+
+	column SK_Universidad
+		dataType: int64
+		formatString: 0
+		lineageTag: 82a0a16d-e7d0-411f-a46e-ed112c5fa9b2
+		summarizeBy: sum
+		sourceColumn: SK_Universidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column CODIGO_INEI
+		dataType: string
+		lineageTag: f2cd8cc6-7e64-4433-bbd4-95c950d3f243
+		summarizeBy: none
+		sourceColumn: CODIGO_INEI
+
+		annotation SummarizationSetBy = Automatic
+
+	column NOMBRE_ENTIDAD
+		dataType: string
+		lineageTag: c3907bd6-349d-4c13-80a0-b427421f4b35
+		summarizeBy: none
+		sourceColumn: NOMBRE_ENTIDAD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIPO_ENTIDAD
+		dataType: string
+		lineageTag: 53eb6034-e4d9-406d-844a-cf43e7d52c46
+		summarizeBy: none
+		sourceColumn: TIPO_ENTIDAD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIPO_GESTION
+		dataType: string
+		lineageTag: 92fcbc78-f95e-4fec-b872-41e3e551d690
+		summarizeBy: none
+		sourceColumn: TIPO_GESTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIPO_CONSTITUCION
+		dataType: string
+		lineageTag: bd5778cd-4778-493a-aab4-89cd4d64978c
+		summarizeBy: none
+		sourceColumn: TIPO_CONSTITUCION
+
+		annotation SummarizationSetBy = Automatic
+
+	column ESTADO_LICENCIAMIENTO
+		dataType: string
+		lineageTag: 2249d75e-068b-45be-9ea7-051a99ef9510
+		summarizeBy: none
+		sourceColumn: ESTADO_LICENCIAMIENTO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_universidad = m
+		mode: import
+		source =
+				let
+				    Origen = Parquet.Document(File.Contents("D:\Proyectos\A.Prueba Tecnica UCSP\data\Dashboard_parquet\dim_universidad.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

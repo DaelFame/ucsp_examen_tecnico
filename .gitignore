@@ -1,0 +1,22 @@
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+docs/
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Variables de entorno (claves y contraseñas)
+.env
+
+# Archivos temporales de Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Configuración de editores
+.vscode/
+.idea/
+
+# Carpetas de datos pesados (opcional: ignóralas si tienes datasets pesados)
+data/

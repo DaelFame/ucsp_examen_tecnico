@@ -1,0 +1,74 @@
+table fact_ingresantes_dashboard
+	lineageTag: 7591cf60-270d-41e1-bccd-9a0f6660ecad
+
+	column FK_Universidad
+		dataType: int64
+		formatString: 0
+		lineageTag: e51f2f87-9529-411f-ac15-c8c1382ee195
+		summarizeBy: sum
+		sourceColumn: FK_Universidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column FK_Programa
+		dataType: int64
+		formatString: 0
+		lineageTag: 464eb9fb-d192-42ca-a3fb-abe3575a9b1f
+		summarizeBy: sum
+		sourceColumn: FK_Programa
+
+		annotation SummarizationSetBy = Automatic
+
+	column FK_Periodo
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fce2ed6-4c07-49a2-bdea-578a920781c0
+		summarizeBy: sum
+		sourceColumn: FK_Periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column FK_Ubicacion
+		dataType: int64
+		formatString: 0
+		lineageTag: e0f4006c-b0f7-4abc-8cb1-dadca35f3665
+		summarizeBy: sum
+		sourceColumn: FK_Ubicacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEXO
+		dataType: string
+		lineageTag: 2ff0baaa-5be0-4324-8759-f0542f43261c
+		summarizeBy: none
+		sourceColumn: SEXO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RANGO_EDAD
+		dataType: string
+		lineageTag: ddfd5cfc-4aab-48d2-9e6c-160d6e018439
+		summarizeBy: none
+		sourceColumn: RANGO_EDAD
+
+		annotation SummarizationSetBy = Automatic
+
+	column Conteo_Ingresantes
+		dataType: int64
+		formatString: 0
+		lineageTag: fc0cfaf4-43f3-4c4c-b94b-cba12ee7a988
+		summarizeBy: sum
+		sourceColumn: Conteo_Ingresantes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_ingresantes_dashboard = m
+		mode: import
+		source =
+				let
+				    Origen = Parquet.Document(File.Contents("D:\Proyectos\A.Prueba Tecnica UCSP\data\Dashboard_parquet\fact_ingresantes_dashboard.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

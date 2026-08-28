@@ -20,3 +20,9 @@ __pycache__/
 
 # Carpetas de datos pesados (opcional: ignóralas si tienes datasets pesados)
 data/
+# Local Power BI artifacts
+dashboard/*.pbix
+dashboard/**/*.pbix
+
+# Power BI TMDL backups
+**/Medidas.tmdl.bak*

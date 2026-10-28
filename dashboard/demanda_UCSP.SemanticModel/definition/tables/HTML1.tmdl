@@ -8,7 +8,6 @@ table HTML1
 			VAR UCSPReferencia =
 			    CALCULATE(
 			        [Total Matrículas],
-			        REMOVEFILTERS('dim_ubicacion'),
 			        'dim_universidad'[CODIGO_INEI] = "260000062"
 			    )
 			
@@ -162,12 +161,11 @@ table HTML1
 
 	measure HTML_KPI_Ingresantes =
 			
-			VAR TotalMercado = [Total Ingresantes]
+			VAR TotalMercado = [Total Ingresantes (Año)]
 			
 			VAR UCSPReferencia =
 			    CALCULATE(
-			        [Total Ingresantes],
-			        REMOVEFILTERS('dim_ubicacion'),
+			        [Total Ingresantes (Año)],
 			        'dim_universidad'[CODIGO_INEI] = "260000062"
 			    )
 			

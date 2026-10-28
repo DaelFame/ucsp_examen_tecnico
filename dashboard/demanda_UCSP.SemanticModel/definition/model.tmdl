@@ -9,9 +9,9 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["fact_matriculados_dashboard","fact_ingresantes_dashboard","dim_universidad","dim_ubicacion","dim_programa","dim_periodo","dim_local"]
+annotation PBI_QueryOrder = ["fact_matriculados_dashboard","fact_ingresantes_dashboard","dim_universidad","dim_ubicacion","dim_programa","dim_periodo","dim_local","Medidas"]
 
-annotation PBI_ProTooling = ["DevMode"]
+annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
 
 ref table fact_matriculados_dashboard
 ref table fact_ingresantes_dashboard

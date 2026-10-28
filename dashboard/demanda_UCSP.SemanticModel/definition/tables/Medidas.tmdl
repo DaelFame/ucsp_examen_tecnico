@@ -23,16 +23,63 @@ table Medidas
 	measure 'Total Matriculados UCSP' = CALCULATE([Total Matriculados], 'dim_universidad'[CODIGO_INEI] = "260000062")
 		lineageTag: 32f41553-f1de-4c0f-a97d-9660a2fd9cad
 
-	measure 'Ingresantes Año Anterior' = CALCULATE([Total Ingresantes (Año)], 'dim_periodo'[ANIO] = MAX('dim_periodo'[ANIO]) - 1)
+	measure 'Ingresantes Año Anterior' =
+			VAR AnioActual =
+			    SELECTEDVALUE ( 'dim_periodo'[ANIO] )
+			RETURN
+			    IF (
+			        ISBLANK ( AnioActual ),
+			        BLANK (),
+			        CALCULATE (
+			            [Total Ingresantes (Año)],
+			            REMOVEFILTERS ( 'dim_periodo' ),
+			            'dim_periodo'[ANIO] = AnioActual - 1
+			        )
+			    )
 		lineageTag: 76ced153-857c-41f2-99f1-7ebd8261c6ce
 
-	measure 'Variación % Ingresantes YoY' = DIVIDE([Total Ingresantes (Año)] - [Ingresantes Año Anterior], [Ingresantes Año Anterior])
+	measure 'Variación % Ingresantes YoY' =
+			VAR Actual = [Total Ingresantes (Año)]
+			VAR Anterior = [Ingresantes Año Anterior]
+			RETURN
+			    IF (
+			        ISBLANK ( Actual ) || ISBLANK ( Anterior ),
+			        BLANK (),
+			        DIVIDE ( Actual - Anterior, Anterior )
+			    )
 		lineageTag: fa5f2061-856b-4c76-8ed8-186a9ce37a56
 
-	measure 'Total Matriculados Semestre Anterior' = CALCULATE([Total Matriculados], 'dim_periodo'[ANIO] = MAX('dim_periodo'[ANIO]) - IF(MAX('dim_periodo'[SEMESTRE]) = 1, 1, 0), 'dim_periodo'[SEMESTRE] = IF(MAX('dim_periodo'[SEMESTRE]) = 1, 2, MAX('dim_periodo'[SEMESTRE]) - 1))
+	measure 'Total Matriculados Semestre Anterior' =
+			VAR AnioActual =
+			    SELECTEDVALUE ( 'dim_periodo'[ANIO] )
+			VAR SemestreActual =
+			    SELECTEDVALUE ( 'dim_periodo'[SEMESTRE] )
+			VAR AnioAnterior =
+			    IF ( SemestreActual = 1, AnioActual - 1, AnioActual )
+			VAR SemestreAnterior =
+			    IF ( SemestreActual = 1, 2, 1 )
+			RETURN
+			    IF (
+			        ISBLANK ( AnioActual ) || ISBLANK ( SemestreActual ),
+			        BLANK (),
+			        CALCULATE (
+			            [Total Matriculados],
+			            REMOVEFILTERS ( 'dim_periodo' ),
+			            'dim_periodo'[ANIO] = AnioAnterior,
+			            'dim_periodo'[SEMESTRE] = SemestreAnterior
+			        )
+			    )
 		lineageTag: 61b39c5c-e6ed-4f95-b95e-97437db94200
 
-	measure 'Variación % Matriculados Semestre' = DIVIDE([Total Matriculados] - [Total Matriculados Semestre Anterior], [Total Matriculados Semestre Anterior])
+	measure 'Variación % Matriculados Semestre' =
+			VAR Actual = [Total Matriculados]
+			VAR Anterior = [Total Matriculados Semestre Anterior]
+			RETURN
+			    IF (
+			        ISBLANK ( Actual ) || ISBLANK ( Anterior ),
+			        BLANK (),
+			        DIVIDE ( Actual - Anterior, Anterior )
+			    )
 		lineageTag: f825f3ff-7ca0-4f43-bad1-196641009077
 
 	measure 'Rango Programas Ingresantes' = RANKX(ALLSELECTED('dim_programa'[SK_Programa]), [Total Ingresantes (Año)], , DESC, Dense)
@@ -63,10 +110,9 @@ table Medidas
 		lineageTag: 91b7eb1a-90e0-4447-9f01-7a68f8664d31
 
 	measure 'Total Matrículas UCSP' =
-			CALCULATE(
-				[Total Matrículas],
-				REMOVEFILTERS('dim_universidad'),
-				'dim_universidad'[CODIGO_INEI] = "260000062"
+			CALCULATE (
+			    [Total Matrículas],
+			    KEEPFILTERS ( 'dim_universidad'[CODIGO_INEI] = "260000062" )
 			)
 		lineageTag: 7f349d86-c331-48ec-9380-4c71ffa0130c
 
@@ -92,27 +138,18 @@ table Medidas
 
 	measure 'Posición UCSP Matrículas' =
 			VAR Universo =
-				ALLSELECTED('dim_universidad'[NOMBRE_ENTIDAD])
-			
+			    ALLSELECTED ( 'dim_universidad'[NOMBRE_ENTIDAD] )
 			VAR ValorUCSP =
-				CALCULATE(
-					[Total Matrículas],
-					REMOVEFILTERS('dim_universidad'),
-					'dim_universidad'[CODIGO_INEI] = "260000062"
-				)
-			
+			    CALCULATE (
+			        [Total Matrículas],
+			        KEEPFILTERS ( 'dim_universidad'[CODIGO_INEI] = "260000062" )
+			    )
 			RETURN
-				IF(
-					ISBLANK(ValorUCSP),
-					BLANK(),
-					RANKX(
-						Universo,
-						[Total Matrículas],
-						ValorUCSP,
-						DESC,
-						DENSE
-					)
-				)
+			    IF (
+			        ISBLANK ( ValorUCSP ),
+			        BLANK (),
+			        RANKX ( Universo, [Total Matrículas], ValorUCSP, DESC, DENSE )
+			    )
 		lineageTag: 7e934465-b78e-4d0b-82cc-de0991ffcce9
 
 	measure 'Total Universidades' =
@@ -168,6 +205,77 @@ table Medidas
 		lineageTag: c388a8af-da70-491a-8627-3b6fda70b572
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Semestres por Año' =
+			VAR SemestresVisibles =
+			    CALCULATE (
+			        COUNTROWS ( 'dim_periodo' ),
+			        'dim_periodo'[TIPO_PERIODO] = "SEMESTRAL"
+			    )
+			VAR AniosVisibles =
+			    COUNTROWS ( VALUES ( 'dim_periodo'[ANIO] ) )
+			RETURN
+			    IF (
+			        SemestresVisibles = 0 || AniosVisibles = 0,
+			        BLANK (),
+			        DIVIDE ( SemestresVisibles, AniosVisibles )
+			    )
+		formatString: 0
+		isHidden
+		lineageTag: acb438bf-391f-4489-95ef-1d748d5235f1
+
+	measure 'Matrículas Promedio Semestral' = DIVIDE ( [Total Matrículas], [Semestres por Año] )
+		formatString: #,##0
+		lineageTag: 40e01bb7-27de-4cd1-998e-48cb49c12aa8
+
+	measure 'Matrículas Promedio Semestral Mercado' =
+			CALCULATE (
+			    [Matrículas Promedio Semestral],
+			    ALLSELECTED ( 'dim_universidad'[NOMBRE_ENTIDAD] )
+			)
+		formatString: #,##0
+		lineageTag: e45bd378-3f80-4a58-b02a-93669133180a
+
+	measure 'Matrículas Promedio Semestral Año Anterior' =
+			VAR AnioActual =
+			    SELECTEDVALUE ( 'dim_periodo'[ANIO] )
+			VAR UnSoloSemestre =
+			    HASONEVALUE ( 'dim_periodo'[SEMESTRE] )
+			VAR SemestreActual =
+			    SELECTEDVALUE ( 'dim_periodo'[SEMESTRE] )
+			RETURN
+			    IF (
+			        ISBLANK ( AnioActual ),
+			        BLANK (),
+			        IF (
+			            UnSoloSemestre,
+			            CALCULATE (
+			                [Total Matrículas],
+			                REMOVEFILTERS ( 'dim_periodo' ),
+			                'dim_periodo'[ANIO] = AnioActual - 1,
+			                'dim_periodo'[SEMESTRE] = SemestreActual
+			            ),
+			            CALCULATE (
+			                [Matrículas Promedio Semestral],
+			                REMOVEFILTERS ( 'dim_periodo' ),
+			                'dim_periodo'[ANIO] = AnioActual - 1
+			            )
+			        )
+			    )
+		formatString: #,##0
+		lineageTag: 3bbeb342-59a0-4e7c-977d-8b43a2e152f0
+
+	measure 'Variación % Matrículas YoY' =
+			VAR Actual = [Matrículas Promedio Semestral]
+			VAR Anterior = [Matrículas Promedio Semestral Año Anterior]
+			RETURN
+			    IF (
+			        ISBLANK ( Actual ) || ISBLANK ( Anterior ),
+			        BLANK (),
+			        DIVIDE ( Actual - Anterior, Anterior )
+			    )
+		formatString: 0.0%
+		lineageTag: f937b67c-4906-4c09-a2ef-dba11e7ec225
 
 	column _Medidas
 		dataType: string
